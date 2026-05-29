@@ -1,0 +1,80 @@
+baseURL: https://hailoc12.github.io/ai20k-technical-guidebook/
+title: "AI20K Technical Guidebook"
+hasCJKLanguage: true
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+menu:
+  main:
+    - name: Sách hướng dẫn
+      pageRef: /docs
+      weight: 1
+    - name: Tìm kiếm
+      weight: 2
+      params:
+        type: search
+    - name: GitHub
+      weight: 3
+      url: "https://github.com/hailoc12/ai20k-agent-template"
+      params:
+        icon: github
+
+params:
+  description: "Hướng dẫn kỹ thuật xây dựng AI Agent với LangGraph cho học viên VinUni AI20K"
+
+  navbar:
+    displayTitle: true
+    displayLogo: false
+    width: wide
+
+  theme:
+    default: system
+    displayToggle: true
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: normal
+
+  displayUpdatedDate: false
+  dateFormat: "January 2, 2006"
+
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  highlight:
+    copy:
+      enable: true
+      display: hover
+
+  page:
+    width: normal
+    contextMenu:
+      enable: true
+      links:
+        - name: Mở trong ChatGPT
+          icon: chatgpt
+          url: "https://chatgpt.com/?hints=search&q=T%C3%B4i+%C4%91ang+%C4%91%E1%BB%8Dc+t%C3%A0i+li%E1%BB%87u+n%C3%A0y%3A+{url}%0AGi%C3%BAp+t%C3%B4i+hi%E1%BB%83u+c%C3%A1ch+s%E1%BB%AD+d%E1%BB%A5ng."
+        - name: Mở trong Claude
+          icon: claude
+          url: "https://claude.ai/new?q=T%C3%B4i+%C4%91ang+%C4%91%E1%BB%8Dc+t%C3%A0i+li%E1%BB%87u+n%C3%A0y%3A+{url}%0AGi%C3%BAp+t%C3%B4i+hi%E1%BB%83u+c%C3%A1ch+s%E1%BB%AD+d%E1%BB%A5ng."
+
+  imageZoom:
+    enable: true
