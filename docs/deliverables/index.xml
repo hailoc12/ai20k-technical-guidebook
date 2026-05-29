@@ -1,136 +1,106 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI20K Technical Guidebook – Required Deliverables</title>
-    <link>http://localhost:1313/ai20k-technical-guidebook/docs/deliverables/</link>
-    <description>Recent content in Required Deliverables on AI20K Technical Guidebook</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    
-	  <atom:link href="http://localhost:1313/ai20k-technical-guidebook/docs/deliverables/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-        
-      
-    
-    
-    <item>
-      <title>Deliverables Checklist</title>
-      <link>http://localhost:1313/ai20k-technical-guidebook/docs/deliverables/checklist/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/ai20k-technical-guidebook/docs/deliverables/checklist/</guid>
-      <description>
-        
-        
-        &lt;h2&gt;10 Deliverables BTC Yêu Cầu&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;10-deliverables-btc-yêu-cầu&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#10-deliverables-btc-y%c3%aau-c%e1%ba%a7u&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Chi tiết từng deliverable&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;chi-tiết-từng-deliverable&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#chi-ti%e1%ba%bft-t%e1%bb%abng-deliverable&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;1. Source Code (GitHub)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-source-code-github&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#1-source-code-github&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI20K Technical Guidebook – Required Deliverables</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/docs/deliverables/</link><description>Recent content in Required Deliverables on AI20K Technical Guidebook</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://hailoc12.github.io/ai20k-technical-guidebook/docs/deliverables/index.xml" rel="self" type="application/rss+xml"/><item><title>Deliverables Checklist</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/docs/deliverables/checklist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hailoc12.github.io/ai20k-technical-guidebook/docs/deliverables/checklist/</guid><description>
+&lt;h2&gt;10 Deliverables BTC Yêu Cầu&lt;span class="hx:absolute hx:-mt-20" id="10-deliverables-btc-yêu-cầu"&gt;&lt;/span&gt;
+&lt;a href="#10-deliverables-btc-y%c3%aau-c%e1%ba%a7u" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Chi tiết từng deliverable&lt;span class="hx:absolute hx:-mt-20" id="chi-tiết-từng-deliverable"&gt;&lt;/span&gt;
+&lt;a href="#chi-ti%e1%ba%bft-t%e1%bb%abng-deliverable" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;1. Source Code (GitHub)&lt;span class="hx:absolute hx:-mt-20" id="1-source-code-github"&gt;&lt;/span&gt;
+&lt;a href="#1-source-code-github" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; Toàn bộ thư mục &lt;code&gt;src/&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Code chạy được, có cấu trúc rõ ràng&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Follow template folder structure&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;2. README.md&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-readmemd&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#2-readmemd&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;2. README.md&lt;span class="hx:absolute hx:-mt-20" id="2-readmemd"&gt;&lt;/span&gt;
+&lt;a href="#2-readmemd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/README.md&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Problem → Solution → Tech Stack → Setup → Team&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Sử dụng template README.md đã có sẵn&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;3. Architecture Diagram&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;3-architecture-diagram&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#3-architecture-diagram&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;3. Architecture Diagram&lt;span class="hx:absolute hx:-mt-20" id="3-architecture-diagram"&gt;&lt;/span&gt;
+&lt;a href="#3-architecture-diagram" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/docs/architecture_diagram.md&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; System diagram + Component descriptions&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Dùng Mermaid syntax (render trên GitHub)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;4. AI Logs&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;4-ai-logs&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#4-ai-logs&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;4. AI Logs&lt;span class="hx:absolute hx:-mt-20" id="4-ai-logs"&gt;&lt;/span&gt;
+&lt;a href="#4-ai-logs" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Log các interaction với LLM&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Setup logging trong &lt;code&gt;main.py&lt;/code&gt; hoặc dùng LangSmith&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;5. Live URL / Deploy&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;5-live-url--deploy&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#5-live-url--deploy&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;5. Live URL / Deploy&lt;span class="hx:absolute hx:-mt-20" id="5-live-url--deploy"&gt;&lt;/span&gt;
+&lt;a href="#5-live-url--deploy" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Sản phẩm chạy được trên internet&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Deploy backend lên Render/Railway, frontend lên Vercel&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;6. Video Demo&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;6-video-demo&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#6-video-demo&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;6. Video Demo&lt;span class="hx:absolute hx:-mt-20" id="6-video-demo"&gt;&lt;/span&gt;
+&lt;a href="#6-video-demo" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; Upload lên YouTube/Google Drive&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Tối đa 5 phút, demo feature chính&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Follow pitch structure trong &lt;code&gt;presentation/README.md&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;7. Pitch Deck&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;7-pitch-deck&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#7-pitch-deck&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;7. Pitch Deck&lt;span class="hx:absolute hx:-mt-20" id="7-pitch-deck"&gt;&lt;/span&gt;
+&lt;a href="#7-pitch-deck" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/presentation/pitch_deck.pptx&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; 10 slides theo structure chuẩn&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Follow template trong &lt;code&gt;presentation/README.md&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;8. Weekly Journal&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;8-weekly-journal&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#8-weekly-journal&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;8. Weekly Journal&lt;span class="hx:absolute hx:-mt-20" id="8-weekly-journal"&gt;&lt;/span&gt;
+&lt;a href="#8-weekly-journal" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/JOURNAL.md&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Ghi lại mỗi tuần: mục tiêu, hoàn thành, khó khăn, bài học&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Template đã có sẵn, chỉ cần điền&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;9. Worklog&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;9-worklog&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#9-worklog&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;9. Worklog&lt;span class="hx:absolute hx:-mt-20" id="9-worklog"&gt;&lt;/span&gt;
+&lt;a href="#9-worklog" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/WORKLOG.md&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Ghi lại hàng ngày: ai làm gì, kết quả gì&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Template đã có sẵn, cập nhật mỗi ngày&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;10. Evaluation Evidence&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;10-evaluation-evidence&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#10-evaluation-evidence&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4&gt;10. Evaluation Evidence&lt;span class="hx:absolute hx:-mt-20" id="10-evaluation-evidence"&gt;&lt;/span&gt;
+&lt;a href="#10-evaluation-evidence" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/eval/results/report.md&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Yêu cầu:&lt;/strong&gt; Metrics, test results, user feedback&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Follow template trong &lt;code&gt;eval/results/report.md&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Evaluation Criteria (BTC chấm 1-10)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;evaluation-criteria-btc-chấm-1-10&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#evaluation-criteria-btc-ch%e1%ba%a5m-1-10&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;h2&gt;Evaluation Criteria (BTC chấm 1-10)&lt;span class="hx:absolute hx:-mt-20" id="evaluation-criteria-btc-chấm-1-10"&gt;&lt;/span&gt;
+&lt;a href="#evaluation-criteria-btc-ch%e1%ba%a5m-1-10" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Product/Business&lt;/strong&gt; — README, metrics, user feedback&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;System Design&lt;/strong&gt; — Architecture, diagram, folder structure&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;UX/UI Design&lt;/strong&gt; — Responsive, dark mode, accessibility&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;DevOps&lt;/strong&gt; — Docker, CI/CD, logging, .env&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Code Quality&lt;/strong&gt; — Type hints, naming, tests, no bare except&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3&gt;Target: 35+/50 points&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;target-3550-points&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#target-3550-points&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Criteria&lt;/th&gt;
-					&lt;th&gt;Minimum&lt;/th&gt;
-					&lt;th&gt;How to achieve&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Product&lt;/td&gt;
-					&lt;td&gt;≥ 8&lt;/td&gt;
-					&lt;td&gt;README đầy đủ, metrics, feedback&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;System&lt;/td&gt;
-					&lt;td&gt;≥ 7&lt;/td&gt;
-					&lt;td&gt;Architecture doc + Mermaid diagram&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;UI/UX&lt;/td&gt;
-					&lt;td&gt;≥ 7&lt;/td&gt;
-					&lt;td&gt;Responsive + dark mode&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;DevOps&lt;/td&gt;
-					&lt;td&gt;≥ 6&lt;/td&gt;
-					&lt;td&gt;Docker + CI/CD + logging&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Code&lt;/td&gt;
-					&lt;td&gt;≥ 7&lt;/td&gt;
-					&lt;td&gt;Type hints + tests + ruff pass&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-
-      </description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;h3&gt;Target: 35+/50 points&lt;span class="hx:absolute hx:-mt-20" id="target-3550-points"&gt;&lt;/span&gt;
+&lt;a href="#target-3550-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Criteria&lt;/th&gt;
+&lt;th&gt;Minimum&lt;/th&gt;
+&lt;th&gt;How to achieve&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Product&lt;/td&gt;
+&lt;td&gt;≥ 8&lt;/td&gt;
+&lt;td&gt;README đầy đủ, metrics, feedback&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;System&lt;/td&gt;
+&lt;td&gt;≥ 7&lt;/td&gt;
+&lt;td&gt;Architecture doc + Mermaid diagram&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;UI/UX&lt;/td&gt;
+&lt;td&gt;≥ 7&lt;/td&gt;
+&lt;td&gt;Responsive + dark mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DevOps&lt;/td&gt;
+&lt;td&gt;≥ 6&lt;/td&gt;
+&lt;td&gt;Docker + CI/CD + logging&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Code&lt;/td&gt;
+&lt;td&gt;≥ 7&lt;/td&gt;
+&lt;td&gt;Type hints + tests + ruff pass&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description></item></channel></rss>
