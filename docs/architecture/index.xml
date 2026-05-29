@@ -1,51 +1,75 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI20K Technical Guidebook – System Architecture</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/docs/architecture/</link><description>Recent content in System Architecture on AI20K Technical Guidebook</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://hailoc12.github.io/ai20k-technical-guidebook/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><item><title>System Design</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/docs/architecture/system-design/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hailoc12.github.io/ai20k-technical-guidebook/docs/architecture/system-design/</guid><description>
-&lt;h2&gt;System Architecture&lt;span class="hx:absolute hx:-mt-20" id="system-architecture"&gt;&lt;/span&gt;
-&lt;a href="#system-architecture" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Overview Diagram&lt;span class="hx:absolute hx:-mt-20" id="overview-diagram"&gt;&lt;/span&gt;
-&lt;a href="#overview-diagram" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div role="img" aria-label="Diagram"&gt;
-&lt;pre class="mermaid hx:mt-6"&gt;
-graph TB
-User([User]) --&amp;gt; UI[Frontend&amp;lt;br/&amp;gt;React/Next.js]
-UI --&amp;gt;|REST API| API[FastAPI Backend]
-API --&amp;gt; Agent[LangGraph Agent]
-Agent --&amp;gt; LLM[LLM Service&amp;lt;br/&amp;gt;GPT-4o / Gemini]
-Agent --&amp;gt; Tools[Agent Tools]
-Tools --&amp;gt; DB[(Database)]
-Agent --&amp;gt; VS[Vector Store&amp;lt;br/&amp;gt;ChromaDB]
-&lt;/pre&gt;
-&lt;/div&gt;&lt;h2&gt;Components&lt;span class="hx:absolute hx:-mt-20" id="components"&gt;&lt;/span&gt;
-&lt;a href="#components" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. Frontend (React/Next.js)&lt;span class="hx:absolute hx:-mt-20" id="1-frontend-reactnextjs"&gt;&lt;/span&gt;
-&lt;a href="#1-frontend-reactnextjs" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI20K Technical Guidebook – System Architecture</title>
+    <link>http://localhost:1313/ai20k-technical-guidebook/docs/architecture/</link>
+    <description>Recent content in System Architecture on AI20K Technical Guidebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="http://localhost:1313/ai20k-technical-guidebook/docs/architecture/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>System Design</title>
+      <link>http://localhost:1313/ai20k-technical-guidebook/docs/architecture/system-design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/ai20k-technical-guidebook/docs/architecture/system-design/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;System Architecture&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;system-architecture&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#system-architecture&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Overview Diagram&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;overview-diagram&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#overview-diagram&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div role=&#34;img&#34; aria-label=&#34;Diagram&#34;&gt;
+  &lt;pre class=&#34;mermaid hx:mt-6&#34;&gt;
+    graph TB
+    User([User]) --&amp;gt; UI[Frontend&amp;lt;br/&amp;gt;React/Next.js]
+    UI --&amp;gt;|REST API| API[FastAPI Backend]
+    API --&amp;gt; Agent[LangGraph Agent]
+    Agent --&amp;gt; LLM[LLM Service&amp;lt;br/&amp;gt;GPT-4o / Gemini]
+    Agent --&amp;gt; Tools[Agent Tools]
+    Tools --&amp;gt; DB[(Database)]
+    Agent --&amp;gt; VS[Vector Store&amp;lt;br/&amp;gt;ChromaDB]
+  &lt;/pre&gt;
+&lt;/div&gt;&lt;h2&gt;Components&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;components&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#components&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. Frontend (React/Next.js)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;1-frontend-reactnextjs&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-frontend-reactnextjs&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; User interface cho sản phẩm&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Key Features:&lt;/strong&gt; Responsive, dark mode, realtime&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;State Management:&lt;/strong&gt; React hooks / Zustand&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;2. Backend (FastAPI)&lt;span class="hx:absolute hx:-mt-20" id="2-backend-fastapi"&gt;&lt;/span&gt;
-&lt;a href="#2-backend-fastapi" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3&gt;2. Backend (FastAPI)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;2-backend-fastapi&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-backend-fastapi&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; API server xử lý business logic&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;API Design:&lt;/strong&gt; RESTful endpoints&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Auth:&lt;/strong&gt; JWT (nếu cần)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;3. AI Agent (LangGraph)&lt;span class="hx:absolute hx:-mt-20" id="3-ai-agent-langgraph"&gt;&lt;/span&gt;
-&lt;a href="#3-ai-agent-langgraph" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3&gt;3. AI Agent (LangGraph)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;3-ai-agent-langgraph&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-ai-agent-langgraph&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Agent Type:&lt;/strong&gt; ReAct / Plan-and-Execute / Custom&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;State:&lt;/strong&gt; TypedDict schema&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Nodes:&lt;/strong&gt; Xử lý từng bước trong pipeline&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Tools:&lt;/strong&gt; Search, calculate, API calls&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;4. Database&lt;span class="hx:absolute hx:-mt-20" id="4-database"&gt;&lt;/span&gt;
-&lt;a href="#4-database" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3&gt;4. Database&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;4-database&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#4-database&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Type:&lt;/strong&gt; PostgreSQL (production) / SQLite (dev)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;ORM:&lt;/strong&gt; SQLAlchemy (nếu cần)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Migrations:&lt;/strong&gt; Alembic (nếu cần)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;5. Vector Store&lt;span class="hx:absolute hx:-mt-20" id="5-vector-store"&gt;&lt;/span&gt;
-&lt;a href="#5-vector-store" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3&gt;5. Vector Store&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;5-vector-store&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#5-vector-store&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Type:&lt;/strong&gt; ChromaDB (local) / Pinecone (cloud)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Embeddings:&lt;/strong&gt; OpenAI embeddings&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; RAG / similarity search&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Data Flow&lt;span class="hx:absolute hx:-mt-20" id="data-flow"&gt;&lt;/span&gt;
-&lt;a href="#data-flow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;h2&gt;Data Flow&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;data-flow&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#data-flow&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;User gửi request từ Frontend&lt;/li&gt;
 &lt;li&gt;API route nhận và validate input (Pydantic)&lt;/li&gt;
 &lt;li&gt;Agent xử lý qua LangGraph pipeline&lt;/li&gt;
@@ -53,35 +77,41 @@ Agent --&amp;gt; VS[Vector Store&amp;lt;br/&amp;gt;ChromaDB]
 &lt;li&gt;Tools thực thi actions (nếu cần)&lt;/li&gt;
 &lt;li&gt;Response trả về Frontend qua API&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2&gt;Design Decisions&lt;span class="hx:absolute hx:-mt-20" id="design-decisions"&gt;&lt;/span&gt;
-&lt;a href="#design-decisions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Decision&lt;/th&gt;
-&lt;th&gt;Choice&lt;/th&gt;
-&lt;th&gt;Reason&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Framework&lt;/td&gt;
-&lt;td&gt;FastAPI&lt;/td&gt;
-&lt;td&gt;Async, auto-docs, type-safe&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Agent&lt;/td&gt;
-&lt;td&gt;LangGraph&lt;/td&gt;
-&lt;td&gt;Flexible state machine&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Database&lt;/td&gt;
-&lt;td&gt;SQLite→PostgreSQL&lt;/td&gt;
-&lt;td&gt;Dev dễ, prod mạnh&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Frontend&lt;/td&gt;
-&lt;td&gt;Next.js&lt;/td&gt;
-&lt;td&gt;Full-stack ready&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</description></item></channel></rss>
+&lt;h2&gt;Design Decisions&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;design-decisions&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#design-decisions&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Decision&lt;/th&gt;
+					&lt;th&gt;Choice&lt;/th&gt;
+					&lt;th&gt;Reason&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Framework&lt;/td&gt;
+					&lt;td&gt;FastAPI&lt;/td&gt;
+					&lt;td&gt;Async, auto-docs, type-safe&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Agent&lt;/td&gt;
+					&lt;td&gt;LangGraph&lt;/td&gt;
+					&lt;td&gt;Flexible state machine&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Database&lt;/td&gt;
+					&lt;td&gt;SQLite→PostgreSQL&lt;/td&gt;
+					&lt;td&gt;Dev dễ, prod mạnh&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Frontend&lt;/td&gt;
+					&lt;td&gt;Next.js&lt;/td&gt;
+					&lt;td&gt;Full-stack ready&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

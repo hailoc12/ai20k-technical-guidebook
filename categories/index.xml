@@ -1,1 +1,18 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI20K Technical Guidebook – Categories</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/categories/</link><description>Recent content in Categories on AI20K Technical Guidebook</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://hailoc12.github.io/ai20k-technical-guidebook/categories/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI20K Technical Guidebook – Categories</title>
+    <link>http://localhost:1313/ai20k-technical-guidebook/categories/</link>
+    <description>Recent content in Categories on AI20K Technical Guidebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="http://localhost:1313/ai20k-technical-guidebook/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
