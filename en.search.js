@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // 
 
 (function () {
-  const searchDataURL = '/en.search-data.json';
+  const searchDataURL = '/ai20k-technical-guidebook/en.search-data.json';
   const resultsFoundTemplate = '%d results found';
 
   const inputElements = document.querySelectorAll('.hextra-search-input');
