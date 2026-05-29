@@ -480,8 +480,8 @@ data-copied-label="Copied!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Lời mở đầu</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/docs/chapter-01/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hailoc12.github.io/ai20k-technical-guidebook/docs/chapter-01/</guid><description>
-&lt;h2&gt;Mục tiêu của cuốn sách này&lt;span class="hx:absolute hx:-mt-20" id="mục-tiêu-của-cuốn-sách-này"&gt;&lt;/span&gt;
-&lt;a href="#m%e1%bb%a5c-ti%c3%aau-c%e1%bb%a7a-cu%e1%bb%91n-s%c3%a1ch-n%c3%a0y" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Cuốn sách này được thiết kế với một mục tiêu duy nhất: &lt;strong&gt;giúp bạn xây dựng một dự án AI Agent đạt chất lượng cao&lt;/strong&gt;, từ thiết kế kiến trúc đến nộp bài cuối kỳ.&lt;/p&gt;
+&lt;h2&gt;Mục tiêu của tài liệu này&lt;span class="hx:absolute hx:-mt-20" id="mục-tiêu-của-tài-liệu-này"&gt;&lt;/span&gt;
+&lt;a href="#m%e1%bb%a5c-ti%c3%aau-c%e1%bb%a7a-t%c3%a0i-li%e1%bb%87u-n%c3%a0y" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Cuốn sách này được thiết kế với một mục tiêu duy nhất: &lt;strong&gt;giúp bạn xây dựng một dự án AI Agent đạt chất lượng cao&lt;/strong&gt;, từ thiết kế kiến trúc đến nộp bài cuối kỳ.&lt;/p&gt;
 &lt;p&gt;Bạn sẽ học được:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Cách tổ chức dự án theo chuẩn industry — folder structure, config, environment&lt;/li&gt;
@@ -491,7 +491,7 @@ data-copied-label="Copied!"
 &lt;li&gt;Viết test và đánh giá chất lượng Agent&lt;/li&gt;
 &lt;li&gt;Hoàn thành đầy đủ deliverables đúng deadline&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Mỗi chương đi kèm code examples cụ thể, tips thực hành, và bài tập ôn tập. Đọc xong cuốn sách này, bạn có thể tự tin build một project hoàn chỉnh.&lt;/p&gt;
+&lt;p&gt;Mỗi chương đi kèm code examples cụ thể, tips thực hành, và bài tập ôn tập. Đọc xong tài liệu này, bạn có thể tự tin build một project hoàn chỉnh.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;🔑 &lt;strong&gt;ĐIỂM CHÍNH:&lt;/strong&gt; Đây không phải sách lý thuyết. Mỗi chương đều có code bạn có thể copy, chạy, và modify ngay. Hãy mở terminal lên và code theo từng bước.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -550,8 +550,8 @@ data-copied-label="Copied!"
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Nếu bạn chưa vững Python, hãy hoàn thành khóa &amp;ldquo;AI Python for Beginners&amp;rdquo; trên &lt;a href="https://www.deeplearning.ai/courses"target="_blank" rel="noopener"&gt;DeepLearning.AI&lt;/a&gt; trước khi bắt đầu.&lt;/p&gt;
-&lt;h2&gt;Cách sử dụng cuốn sách này&lt;span class="hx:absolute hx:-mt-20" id="cách-sử-dụng-cuốn-sách-này"&gt;&lt;/span&gt;
-&lt;a href="#c%c3%a1ch-s%e1%bb%ad-d%e1%bb%a5ng-cu%e1%bb%91n-s%c3%a1ch-n%c3%a0y" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Lộ trình 6 tuần&lt;span class="hx:absolute hx:-mt-20" id="lộ-trình-6-tuần"&gt;&lt;/span&gt;
+&lt;h2&gt;Cách sử dụng tài liệu này&lt;span class="hx:absolute hx:-mt-20" id="cách-sử-dụng-tài-liệu-này"&gt;&lt;/span&gt;
+&lt;a href="#c%c3%a1ch-s%e1%bb%ad-d%e1%bb%a5ng-t%c3%a0i-li%e1%bb%87u-n%c3%a0y" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Lộ trình 6 tuần&lt;span class="hx:absolute hx:-mt-20" id="lộ-trình-6-tuần"&gt;&lt;/span&gt;
 &lt;a href="#l%e1%bb%99-tr%c3%acnh-6-tu%e1%ba%a7n" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -3577,7 +3577,7 @@ data-copied-label="Copied!"
 &lt;a href="#c%c3%a2u-h%e1%bb%8fi-%c3%b4n-t%e1%ba%adp" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Câu 1:&lt;/strong&gt; Trong kiến trúc 3 tầng, tại sao AI Agent không giao tiếp trực tiếp với Frontend mà phải thông qua Backend? Nêu ít nhất 3 lý do kỹ thuật và giải thích lợi ích của từng lý do.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Câu 2:&lt;/strong&gt; Giải thích sự khác biệt giữa LangChain chain (linear) và LangGraph state machine. Cho một ví dụ cụ thể về tình huống mà chain đơn giản không đủ và state machine là cần thiết. Vẽ (hoặc mô tả) diagram minh họa.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Câu 3:&lt;/strong&gt; Viết một ADR cho quyết định: &amp;ldquo;Có nên dùng streaming response (SSE) hay non-streaming response cho Agent chat endpoint?&amp;rdquo; Phân tích ít nhất 2 lựa chọn, nêu ưu/nhược điểm, và đưa ra quyết định có lý do.&lt;/p&gt;</description></item><item><title>Xây dựng AI Agent với LangGraph</title><link>https://hailoc12.github.io/ai20k-technical-guidebook/docs/chapter-04/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hailoc12.github.io/ai20k-technical-guidebook/docs/chapter-04/</guid><description>
-&lt;h1&gt;Chương 4: Xây dựng AI Agent với LangGraph&lt;/h1&gt;&lt;p&gt;Chương này là trái tim của toàn bộ cuốn sách. Bạn sẽ học cách xây dựng AI Agent từ đầu — từ khái niệm cơ bản đến triển khai hoàn chỉnh — sử dụng LangGraph, thư viện mạnh mẽ nhất hiện nay cho việc xây dựng ứng dụng AI có trạng thái (stateful). Đến cuối chương này, bạn sẽ có đủ kiến thức để xây dựng một agent có khả năng suy nghĩ, hành động và phản hồi như một trợ lý thông minh thực thụ.&lt;/p&gt;
+&lt;h1&gt;Chương 4: Xây dựng AI Agent với LangGraph&lt;/h1&gt;&lt;p&gt;Chương này là trái tim của toàn bộ tài liệu. Bạn sẽ học cách xây dựng AI Agent từ đầu — từ khái niệm cơ bản đến triển khai hoàn chỉnh — sử dụng LangGraph, thư viện mạnh mẽ nhất hiện nay cho việc xây dựng ứng dụng AI có trạng thái (stateful). Đến cuối chương này, bạn sẽ có đủ kiến thức để xây dựng một agent có khả năng suy nghĩ, hành động và phản hồi như một trợ lý thông minh thực thụ.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;4.1 Agent là gì?&lt;span class="hx:absolute hx:-mt-20" id="41-agent-là-gì"&gt;&lt;/span&gt;
 &lt;a href="#41-agent-l%c3%a0-g%c3%ac" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Định nghĩa&lt;span class="hx:absolute hx:-mt-20" id="định-nghĩa"&gt;&lt;/span&gt;
