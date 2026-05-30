@@ -15,7 +15,7 @@ Mở terminal và chạy các lệnh sau:
 
 ```bash
 # Thay YOUR_TEAM_NAME bằng tên đội của bạn (ví dụ: team-alpha)
-$ git clone https://github.com/hailoc12/ai20k-agent-template.git team-YOUR_TEAM_NAME
+$ git clone https://github.com/AI20K-Build-Cohort-2/starter-code-template.git team-YOUR_TEAM_NAME
 
 # Di chuyển vào thư mục dự án
 $ cd team-YOUR_TEAM_NAME
@@ -41,24 +41,22 @@ Sau khi clone, hãy mở thư mục dự án trong editor (khuyến nghị VS Co
 ```
 team-YOUR_TEAM_NAME/
 ├── src/
-│   ├── agent/           # LangGraph Agent logic
+│   ├── agents/            # LangGraph Agent logic
 │   │   ├── __init__.py
-│   │   ├── graph.py     # State graph definition
-│   │   ├── state.py     # State schema
-│   │   ├── nodes.py     # Node functions
-│   │   └── tools.py     # Agent tools
-│   ├── api/             # FastAPI endpoints
+│   │   ├── graph.py      # State graph definition
+│   │   ├── state.py      # State schema
+│   │   ├── nodes/        # Node functions (mỗi node một file)
+│   │   └── tools/        # Agent tools (mỗi tool một file)
+│   ├── api/               # FastAPI endpoints
 │   │   ├── __init__.py
-│   │   ├── main.py      # FastAPI app entry point
-│   │   ├── routes/      # API route modules
-│   │   └── deps.py      # Dependencies injection
-│   ├── core/            # Shared config & utilities
+│   │   ├── routes.py     # API route modules
+│   │   └── deps.py       # Dependencies injection
+│   ├── models/            # Data models (Pydantic)
 │   │   ├── __init__.py
-│   │   ├── config.py    # Pydantic settings
-│   │   └── logging.py   # Logging setup
-│   └── models/          # Data models (Pydantic)
-│       ├── __init__.py
-│       └── schemas.py   # Request/Response schemas
+│   │   └── schemas.py    # Request/Response schemas
+│   ├── services/          # Business logic layer
+│   ├── config.py          # Pydantic settings
+│   └── main.py            # FastAPI app entry point
 ├── tests/
 │   ├── unit/            # Unit tests
 │   ├── integration/     # Integration tests
@@ -82,11 +80,11 @@ team-YOUR_TEAM_NAME/
 
 Mỗi thư mục phục vụ một mục đích cụ thể. Hãy hiểu rõ trước khi bắt đầu code:
 
-**`src/agent/`** — Nơi chứa toàn bộ logic AI Agent của bạn. File `graph.py` định nghĩa state graph (sơ đồ trạng thái) cho Agent, `state.py` chứa schema dữ liệu truyền giữa các node, `nodes.py` chứa các hàm xử lý logic tại mỗi bước, và `tools.py` chứa các công cụ mà Agent có thể sử dụng (tìm kiếm web, truy vấn database, gọi API, v.v.). Đây là "bộ não" của ứng dụng.
+**`src/agents/`** — Nơi chứa toàn bộ logic AI Agent của bạn. File `graph.py` định nghĩa state graph (sơ đồ trạng thái) cho Agent, `state.py` chứa schema dữ liệu truyền giữa các node, thư mục `nodes/` chứa các hàm xử lý logic tại mỗi bước (mỗi node một file), và thư mục `tools/` chứa các công cụ mà Agent có thể sử dụng (tìm kiếm web, truy vấn database, gọi API, v.v.). Đây là "bộ não" của ứng dụng.
 
-**`src/api/`** — FastAPI backend. File `main.py` tạo ứng dụng FastAPI và cấu hình middleware. Thư mục `routes/` chứa các file định nghĩa API endpoints, mỗi file tương ứng với một nhóm chức năng. File `deps.py` quản lý dependency injection — ví dụ, tạo instance của Agent và inject vào các route handler.
+**`src/api/`** — FastAPI backend. File `routes.py` định nghĩa API endpoints. File `deps.py` quản lý dependency injection — ví dụ, tạo instance của Agent và inject vào các route handler.
 
-**`src/core/`** — Cấu hình và tiện ích dùng chung. File `config.py` sử dụng pydantic-settings để load và validate biến môi trường. File `logging.py` thiết lập logging format.
+**`src/config.py`** — Cấu hình dùng chung, sử dụng pydantic-settings để load và validate biến môi trường. File `src/main.py` là entry point của FastAPI app.
 
 **`src/models/`** — Pydantic models cho request và response. Đây là "hợp đồng" giữa client và server — định nghĩa rõ dữ liệu gửi lên phải có dạng gì, và dữ liệu trả về sẽ có dạng gì.
 
@@ -151,18 +149,22 @@ Sau khi kích hoạt, bạn sẽ thấy tên venv hiển thị ở đầu comman
 
 ### Cài đặt dependencies
 
-Template sử dụng file `pyproject.toml` để quản lý dependencies — đây là chuẩn hiện đại của Python, thay thế cho `requirements.txt` truyền thống. Các dependencies được chia thành nhiều nhóm:
+Template sử dụng file `requirements.txt` để quản lý dependencies. Cài tất cả bằng một lệnh:
 
 ```bash
-# Cài tất cả dependencies (development + production)
-$ pip install -e ".[dev]"
-
-# Hoặc nếu lệnh trên không hoạt động, cài từng bước:
-$ pip install -e .
-$ pip install -e ".[dev]"
+# Cài tất cả dependencies
+$ pip install -r requirements.txt
 ```
 
-Flag `-e` (editable) có nghĩa là bạn cài package ở chế độ "có thể chỉnh sửa" — khi bạn sửa code trong `src/`, thay đổi sẽ phản ánh ngay lập tức mà không cần cài lại. `[dev]` chỉ định cài thêm các thư viện dùng cho development (testing, linting, formatting).
+Nếu bạn cần thêm thư viện mới, cài rồi cập nhật file:
+
+```bash
+# Cài thư viện mới
+$ pip install <package_name>
+
+# Cập nhật requirements.txt
+$ pip freeze > requirements.txt
+```
 
 Các dependencies chính trong template bao gồm:
 
@@ -226,10 +228,9 @@ APP_ENV=development
 DEBUG=true
 LOG_LEVEL=DEBUG
 
-# API
-API_HOST=0.0.0.0
-API_PORT=8000
-API_PREFIX=/api/v1
+# Server
+APP_HOST=0.0.0.0
+APP_PORT=8000
 
 # LLM Provider
 LLM_PROVIDER=openai
@@ -252,16 +253,24 @@ Sau khi copy, mở file `.env` và thay thế các giá trị placeholder bằng
 
 ### Config module với pydantic-settings
 
-Template sử dụng `pydantic-settings` để quản lý cấu hình. Đây là cách hiện đại và type-safe để load biến môi trường. Hãy xem file `src/core/config.py`:
+Template sử dụng `pydantic-settings` để quản lý cấu hình. Đây là cách hiện đại và type-safe để load biến môi trường. Hãy xem file `src/config.py`:
 
 ```python
 from typing import Literal
-from pydantic import Field, field_validator
-from pydantic_settings import BaseSettings
+from functools import lru_cache
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+        extra="ignore",
+    )
 
     # Application
     app_name: str = "ai-agent"
@@ -269,10 +278,9 @@ class Settings(BaseSettings):
     debug: bool = False
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"] = "INFO"
 
-    # API
-    api_host: str = "0.0.0.0"
-    api_port: int = Field(default=8000, ge=1024, le=65535)
-    api_prefix: str = "/api/v1"
+    # Server
+    app_host: str = "0.0.0.0"
+    app_port: int = Field(default=8000, ge=1024, le=65535)
 
     # LLM
     llm_provider: Literal["openai", "anthropic", "google"] = "openai"
@@ -281,34 +289,30 @@ class Settings(BaseSettings):
     openai_temperature: float = Field(default=0.7, ge=0.0, le=2.0)
     openai_max_tokens: int = Field(default=2048, ge=1, le=128000)
 
-    model_config = {
-        "env_file": ".env",
-        "env_file_encoding": "utf-8",
-        "case_sensitive": False,
-        "extra": "ignore",
-    }
 
-
-# Singleton instance
-settings = Settings()
+@lru_cache
+def get_settings() -> Settings:
+    """Trả về cached Settings instance."""
+    return Settings()
 ```
 
 Phân tích từng phần quan trọng:
 
 **`Literal` types** — `Literal["development", "staging", "production"]` giới hạn `app_env` chỉ nhận một trong ba giá trị. Nếu bạn đặt `APP_ENV=testing` (giá trị không hợp lệ), pydantic sẽ throw error ngay khi app khởi động, thay vì silently fail trong runtime. Đây là một ví dụ của "fail fast" principle — phát hiện lỗi càng sớm càng tốt.
 
-**`Field` validators** — `Field(default=8000, ge=1024, le=65535)` áp dụng validation: port number phải từ 1024 đến 65535. Nếu ai đó đặt `API_PORT=80`, app sẽ báo lỗi ngay. Tương tự, `temperature` bị giới hạn từ 0.0 đến 2.0 (range hợp lệ của OpenAI), và `max_tokens` từ 1 đến 128000.
+**`Field` validators** — `Field(default=8000, ge=1024, le=65535)` áp dụng validation: port number phải từ 1024 đến 65535. Nếu ai đó đặt `APP_PORT=80`, app sẽ báo lỗi ngay. Tương tự, `temperature` bị giới hạn từ 0.0 đến 2.0 (range hợp lệ của OpenAI), và `max_tokens` từ 1 đến 128000.
 
-**`model_config`** — Chỉ định cách load biến môi trường. `env_file=".env"` nói rằng đọc từ file `.env`. `case_sensitive=False` cho phép biến môi trường viết hoa (OPENAI_API_KEY) map vào field viết thường (openai_api_key). `extra="ignore"` bỏ qua các biến môi trường không được định nghĩa trong Settings class.
+**`SettingsConfigDict`** — Cách hiện đại (Pydantic v2) để cấu hình settings. `env_file=".env"` nói rằng đọc từ file `.env`. `case_sensitive=False` cho phép biến môi trường viết hoa (OPENAI_API_KEY) map vào field viết thường (openai_api_key). `extra="ignore"` bỏ qua các biến môi trường không được định nghĩa trong Settings class.
 
-**Singleton pattern** — Dòng `settings = Settings()` tạo một instance duy nhất của Settings ở module level. Khi bạn cần dùng config ở bất kỳ đâu trong code, chỉ cần `from src.core.config import settings` — instance này được tạo một lần và dùng chung cho toàn bộ ứng dụng.
+**`@lru_cache` pattern** — Decorator `@lru_cache` cache kết quả của `get_settings()` — instance Settings chỉ được tạo một lần và tái sử dụng cho toàn bộ ứng dụng. Khi bạn cần dùng config ở bất kỳ đâu trong code, chỉ cần `from src.config import get_settings` rồi gọi `get_settings()`.
 
 ```python
 # Sử dụng ở bất kỳ đâu trong project
-from src.core.config import settings
+from src.config import get_settings
 
+settings = get_settings()
 print(settings.openai_model)     # "gpt-4o-mini"
-print(settings.api_port)         # 8000
+print(settings.app_port)         # 8000
 print(settings.app_env)          # "development"
 ```
 
@@ -335,7 +339,7 @@ $ git pull origin develop
 $ git checkout -b feature/agent-search-tool
 
 # Làm việc, commit thường xuyên
-$ git add src/agent/tools/search.py
+$ git add src/agents/tools/search.py
 $ git commit -m "feat(agent): thêm tool tìm kiếm web"
 
 # Push và tạo Pull Request
@@ -409,12 +413,12 @@ Sau khi setup môi trường và cấu hình, đây là khoảnh khắc quan tr�
 $ source .venv/bin/activate
 
 # Chạy FastAPI server
-$ uvicorn src.api.main:app --reload --host 0.0.0.0 --port 8000
+$ uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Giải thích từng tham số:
 
-- **`src.api.main:app`** — Đường dẫn đến FastAPI app instance. File `src/api/main.py` chứa dòng `app = FastAPI(...)`.
+- **`src.main:app`** — Đường dẫn đến FastAPI app instance. File `src/main.py` chứa dòng `app = FastAPI(...)`.
 - **`--reload`** — Tự động reload server khi code thay đổi. Chỉ dùng trong development, không dùng trong production.
 - **`--host 0.0.0.0`** — Lắng nghe trên tất cả network interfaces, cho phép truy cập từ thiết bị khác trong cùng mạng.
 - **`--port 8000`** — Port number. Khớp với `API_PORT` trong config.
@@ -446,19 +450,18 @@ Template cung cấp sẵn health check endpoint để xác nhận server đang h
 
 ```bash
 # Dùng curl
-$ curl http://localhost:8000/api/v1/health
+$ curl http://localhost:8000/health
 
 # Hoặc mở trong trình duyệt
-# http://localhost:8000/api/v1/health
+# http://localhost:8000/health
 ```
 
 Response mong đợi:
 
 ```json
 {
-  "status": "healthy",
-  "version": "0.1.0",
-  "environment": "development"
+  "status": "ok",
+  "env": "development"
 }
 ```
 
@@ -517,7 +520,7 @@ Agent tự động phân tích sentiment của bài đăng mạng xã hội và 
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -r requirements.txt
 cp .env.example .env  # Điền API key
 make run
 ```
@@ -553,7 +556,7 @@ Sau khi hoàn thành tất cả các bước trong chương này, bạn nên có
 
 Nếu bạn đã có đủ 6 mục trên, bạn đang đi đúng hướng. Sang Chương 3, chúng ta sẽ thiết kế kiến trúc hệ thống — quyết định quan trọng nhất ảnh hưởng đến toàn bộ dự án.
 
-> ⚠️ **LƯU Ý:** Đừng vội bắt đầu viết Agent logic ngay. Template có sẵn placeholder code trong `src/agent/` — để yên cho đến khi bạn hoàn thành thiết kế kiến trúc ở Chương 3. Code mà không có thiết kế là code mà bạn sẽ phải viết lại. Kinh nghiệm cho thấy: các đội thiết kế trước khi code luôn có kết quả tốt hơn đáng kể so với các đội "code first, design later."
+> ⚠️ **LƯU Ý:** Đừng vội bắt đầu viết Agent logic ngay. Template có sẵn placeholder code trong `src/agents/` — để yên cho đến khi bạn hoàn thành thiết kế kiến trúc ở Chương 3. Code mà không có thiết kế là code mà bạn sẽ phải viết lại. Kinh nghiệm cho thấy: các đội thiết kế trước khi code luôn có kết quả tốt hơn đáng kể so với các đội "code first, design later."
 
 ## Tóm tắt
 

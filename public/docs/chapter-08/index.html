@@ -50,7 +50,7 @@ System
 </span></span><span class=line><span class=cl><span class=c1># --- Unit Test: test một hàm đơn lẻ ---</span>
 </span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>test_parse_message_valid_input</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Unit test: test hàm parse_message với input hợp lệ.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.utils</span> <span class=kn>import</span> <span class=n>parse_message</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.utils</span> <span class=kn>import</span> <span class=n>parse_message</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>result</span> <span class=o>=</span> <span class=n>parse_message</span><span class=p>(</span><span class=s1>&#39;{&#34;message&#34;: &#34;Xin chào&#34;, &#34;thread_id&#34;: &#34;123&#34;}&#39;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>    <span class=k>assert</span> <span class=n>result</span><span class=p>[</span><span class=s2>&#34;message&#34;</span><span class=p>]</span> <span class=o>==</span> <span class=s2>&#34;Xin chào&#34;</span>
@@ -86,7 +86,7 @@ System
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>pytest</span>
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>asyncio</span>
 </span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>httpx</span> <span class=kn>import</span> <span class=n>AsyncClient</span><span class=p>,</span> <span class=n>ASGITransport</span>
-</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>app.main</span> <span class=kn>import</span> <span class=n>app</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>src.main</span> <span class=kn>import</span> <span class=n>app</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=nd>@pytest.fixture</span><span class=p>(</span><span class=n>scope</span><span class=o>=</span><span class=s2>&#34;session&#34;</span><span class=p>)</span>
@@ -133,7 +133,7 @@ System
 </span></span><span class=line><span class=cl>            <span class=p>}</span>
 </span></span><span class=line><span class=cl>        <span class=p>]</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><p><strong>Giải thích:</strong> Fixture <code>client</code> tạo <code>AsyncClient</code> kết nối trực tiếp đến FastAPI app qua ASGI transport — không cần chạy HTTP server thật. Điều này làm test nhanh hơn 10-100 lần so với test qua network thật. <code>scope="session"</code> cho <code>event_loop</code> tạo loop một lần và tái sử dụng cho tất cả test.</p><h3>Test GET endpoints<span class="hx:absolute hx:-mt-20" id=test-get-endpoints></span>
-<a href=#test-get-endpoints class=subheading-anchor aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># tests/test_api_health.py</span>
+<a href=#test-get-endpoints class=subheading-anchor aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># tests/test_api/test_routes.py</span>
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>pytest</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
@@ -167,7 +167,7 @@ System
 </span></span><span class=line><span class=cl>    <span class=k>assert</span> <span class=n>response</span><span class=o>.</span><span class=n>status_code</span> <span class=o>==</span> <span class=mi>200</span>
 </span></span><span class=line><span class=cl>    <span class=n>data</span> <span class=o>=</span> <span class=n>response</span><span class=o>.</span><span class=n>json</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>    <span class=k>assert</span> <span class=s2>&#34;message&#34;</span> <span class=ow>in</span> <span class=n>data</span> <span class=ow>or</span> <span class=s2>&#34;status&#34;</span> <span class=ow>in</span> <span class=n>data</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><h3>Test POST endpoints với mock LLM<span class="hx:absolute hx:-mt-20" id=test-post-endpoints-với-mock-llm></span>
-<a href=#test-post-endpoints-v%e1%bb%9bi-mock-llm class=subheading-anchor aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># tests/test_api_chat.py</span>
+<a href=#test-post-endpoints-v%e1%bb%9bi-mock-llm class=subheading-anchor aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># tests/test_api/test_routes.py</span>
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>pytest</span>
 </span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>unittest.mock</span> <span class=kn>import</span> <span class=n>AsyncMock</span><span class=p>,</span> <span class=n>patch</span><span class=p>,</span> <span class=n>MagicMock</span>
 </span></span><span class=line><span class=cl>
@@ -178,7 +178,7 @@ System
 </span></span><span class=line><span class=cl>    <span class=c1># Mock agent.arun để không gọi LLM thật</span>
 </span></span><span class=line><span class=cl>    <span class=n>mock_response</span> <span class=o>=</span> <span class=s2>&#34;Việt Nam có 63 tỉnh thành phố trực thuộc trung ương.&#34;</span>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.graph.agent&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_agent</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.graph.agent&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_agent</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>        <span class=n>mock_agent</span><span class=o>.</span><span class=n>arun</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span><span class=n>return_value</span><span class=o>=</span><span class=n>mock_response</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>        <span class=n>response</span> <span class=o>=</span> <span class=k>await</span> <span class=n>client</span><span class=o>.</span><span class=n>post</span><span class=p>(</span>
@@ -231,7 +231,7 @@ System
 </span></span><span class=line><span class=cl><span class=nd>@pytest.mark.asyncio</span>
 </span></span><span class=line><span class=cl><span class=k>async</span> <span class=k>def</span> <span class=nf>test_chat_llm_error</span><span class=p>(</span><span class=n>client</span><span class=p>,</span> <span class=n>sample_chat_request</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Test POST /api/v1/chat khi LLM bị lỗi.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.graph.agent&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_agent</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.graph.agent&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_agent</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>        <span class=n>mock_agent</span><span class=o>.</span><span class=n>arun</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>            <span class=n>side_effect</span><span class=o>=</span><span class=ne>Exception</span><span class=p>(</span><span class=s2>&#34;LLM API timeout&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>        <span class=p>)</span>
@@ -248,13 +248,13 @@ System
 </span></span><span class=line><span class=cl>pytest tests/ -v
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Chạy một file test</span>
-</span></span><span class=line><span class=cl>pytest tests/test_api_chat.py -v
+</span></span><span class=line><span class=cl>pytest tests/test_api/test_routes.py -v
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Chạy một test cụ thể</span>
-</span></span><span class=line><span class=cl>pytest tests/test_api_chat.py::test_chat_success -v
+</span></span><span class=line><span class=cl>pytest tests/test_api/test_routes.py::test_chat_success -v
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Chạy với coverage</span>
-</span></span><span class=line><span class=cl>pytest tests/ -v --cov<span class=o>=</span>app --cov-report<span class=o>=</span>term-missing
+</span></span><span class=line><span class=cl>pytest tests/ -v --cov<span class=o>=</span>src --cov-report<span class=o>=</span>term-missing
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Chạy và in print statements</span>
 </span></span><span class=line><span class=cl>pytest tests/ -v -s</span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><h2>8.3 Viết test cho Agent<span class="hx:absolute hx:-mt-20" id=83-viết-test-cho-agent></span>
@@ -266,7 +266,7 @@ System
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>test_parse_user_query</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Unit test: test node parse_user_query.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.nodes</span> <span class=kn>import</span> <span class=n>parse_user_query</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.nodes</span> <span class=kn>import</span> <span class=n>parse_user_query</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>state</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;messages&#34;</span><span class=p>:</span> <span class=p>[{</span><span class=s2>&#34;role&#34;</span><span class=p>:</span> <span class=s2>&#34;user&#34;</span><span class=p>,</span> <span class=s2>&#34;content&#34;</span><span class=p>:</span> <span class=s2>&#34;Giá vàng hôm nay?&#34;</span><span class=p>}]}</span>
 </span></span><span class=line><span class=cl>    <span class=n>result</span> <span class=o>=</span> <span class=n>parse_user_query</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
@@ -278,7 +278,7 @@ System
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>test_format_response</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Unit test: test node format_response.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.nodes</span> <span class=kn>import</span> <span class=n>format_response</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.nodes</span> <span class=kn>import</span> <span class=n>format_response</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>state</span> <span class=o>=</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>        <span class=s2>&#34;raw_answer&#34;</span><span class=p>:</span> <span class=s2>&#34;Giá vàng 18K hôm nay là 5.2 triệu/lượng.&#34;</span><span class=p>,</span>
@@ -294,14 +294,14 @@ System
 </span></span><span class=line><span class=cl><span class=nd>@pytest.mark.asyncio</span>
 </span></span><span class=line><span class=cl><span class=k>async</span> <span class=k>def</span> <span class=nf>test_retrieve_documents</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Unit test: test node retrieve_documents với mock vector store.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.nodes</span> <span class=kn>import</span> <span class=n>retrieve_documents</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.nodes</span> <span class=kn>import</span> <span class=n>retrieve_documents</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>mock_docs</span> <span class=o>=</span> <span class=p>[</span>
 </span></span><span class=line><span class=cl>        <span class=p>{</span><span class=s2>&#34;content&#34;</span><span class=p>:</span> <span class=s2>&#34;Giá vàng SJC 5.2 triệu&#34;</span><span class=p>,</span> <span class=s2>&#34;score&#34;</span><span class=p>:</span> <span class=mf>0.95</span><span class=p>},</span>
 </span></span><span class=line><span class=cl>        <span class=p>{</span><span class=s2>&#34;content&#34;</span><span class=p>:</span> <span class=s2>&#34;Giá vàng 18K 4.8 triệu&#34;</span><span class=p>,</span> <span class=s2>&#34;score&#34;</span><span class=p>:</span> <span class=mf>0.88</span><span class=p>},</span>
 </span></span><span class=line><span class=cl>    <span class=p>]</span>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.nodes.vector_store&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_vs</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.nodes.vector_store&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_vs</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>        <span class=n>mock_vs</span><span class=o>.</span><span class=n>similarity_search</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span><span class=n>return_value</span><span class=o>=</span><span class=n>mock_docs</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>        <span class=n>state</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;parsed_query&#34;</span><span class=p>:</span> <span class=p>{</span><span class=s2>&#34;entity&#34;</span><span class=p>:</span> <span class=s2>&#34;vàng&#34;</span><span class=p>,</span> <span class=s2>&#34;intent&#34;</span><span class=p>:</span> <span class=s2>&#34;price_query&#34;</span><span class=p>}}</span>
@@ -317,12 +317,12 @@ System
 </span></span><span class=line><span class=cl><span class=nd>@pytest.mark.asyncio</span>
 </span></span><span class=line><span class=cl><span class=k>async</span> <span class=k>def</span> <span class=nf>test_graph_simple_query_flow</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Integration test: test graph flow cho câu hỏi đơn giản.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.graph</span> <span class=kn>import</span> <span class=n>build_graph</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.graph</span> <span class=kn>import</span> <span class=n>build_graph</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>graph</span> <span class=o>=</span> <span class=n>build_graph</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1># Mock tất cả LLM calls</span>
-</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.nodes.llm&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_llm</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.nodes.llm&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_llm</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>        <span class=n>mock_llm</span><span class=o>.</span><span class=n>ainvoke</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>            <span class=n>return_value</span><span class=o>=</span><span class=n>MagicMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>                <span class=n>content</span><span class=o>=</span><span class=s1>&#39;{&#34;intent&#34;: &#34;simple_query&#34;, &#34;entity&#34;: &#34;vàng&#34;}&#39;</span>
@@ -330,7 +330,7 @@ System
 </span></span><span class=line><span class=cl>        <span class=p>)</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>        <span class=c1># Mock retrieve</span>
-</span></span><span class=line><span class=cl>        <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.nodes.vector_store&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_vs</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.nodes.vector_store&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_vs</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>            <span class=n>mock_vs</span><span class=o>.</span><span class=n>similarity_search</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>                <span class=n>return_value</span><span class=o>=</span><span class=p>[{</span><span class=s2>&#34;content&#34;</span><span class=p>:</span> <span class=s2>&#34;Gold price data&#34;</span><span class=p>,</span> <span class=s2>&#34;score&#34;</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>}]</span>
 </span></span><span class=line><span class=cl>            <span class=p>)</span>
@@ -347,7 +347,7 @@ System
 </span></span><span class=line><span class=cl><span class=nd>@pytest.mark.asyncio</span>
 </span></span><span class=line><span class=cl><span class=k>async</span> <span class=k>def</span> <span class=nf>test_graph_conditional_routing</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Test: graph route đúng cho các loại query khác nhau.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.graph</span> <span class=kn>import</span> <span class=n>build_graph</span><span class=p>,</span> <span class=n>should_retrieve</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.graph</span> <span class=kn>import</span> <span class=n>build_graph</span><span class=p>,</span> <span class=n>should_retrieve</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1># Query cần retrieval</span>
 </span></span><span class=line><span class=cl>    <span class=n>state_retrieve</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;parsed_query&#34;</span><span class=p>:</span> <span class=p>{</span><span class=s2>&#34;intent&#34;</span><span class=p>:</span> <span class=s2>&#34;price_query&#34;</span><span class=p>}}</span>
@@ -361,7 +361,7 @@ System
 </span></span><span class=line><span class=cl><span class=nd>@pytest.mark.asyncio</span>
 </span></span><span class=line><span class=cl><span class=k>async</span> <span class=k>def</span> <span class=nf>test_graph_handles_empty_input</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Test: graph xử lý input rỗng gracefully.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.graph</span> <span class=kn>import</span> <span class=n>build_graph</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.graph</span> <span class=kn>import</span> <span class=n>build_graph</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>graph</span> <span class=o>=</span> <span class=n>build_graph</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>
@@ -377,13 +377,13 @@ System
 </span></span><span class=line><span class=cl><span class=nd>@pytest.mark.asyncio</span>
 </span></span><span class=line><span class=cl><span class=k>async</span> <span class=k>def</span> <span class=nf>test_graph_preserves_thread_history</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Test: graph duy trì lịch sử hội thoại.&#34;&#34;&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>app.agent.graph</span> <span class=kn>import</span> <span class=n>build_graph</span>
+</span></span><span class=line><span class=cl>    <span class=kn>from</span> <span class=nn>src.agents.graph</span> <span class=kn>import</span> <span class=n>build_graph</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=n>graph</span> <span class=o>=</span> <span class=n>build_graph</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>    <span class=n>thread_id</span> <span class=o>=</span> <span class=s2>&#34;test-thread-history&#34;</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1># Message 1</span>
-</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.nodes.llm&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_llm</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.nodes.llm&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_llm</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>        <span class=n>mock_llm</span><span class=o>.</span><span class=n>ainvoke</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>            <span class=n>return_value</span><span class=o>=</span><span class=n>MagicMock</span><span class=p>(</span><span class=n>content</span><span class=o>=</span><span class=s2>&#34;Việt Nam ở Đông Nam Á.&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>        <span class=p>)</span>
@@ -398,7 +398,7 @@ System
 </span></span><span class=line><span class=cl>        <span class=p>)</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    <span class=c1># Message 2 — nên nhớ context từ message 1</span>
-</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;app.agent.nodes.llm&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_llm</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=n>patch</span><span class=p>(</span><span class=s2>&#34;src.agents.nodes.llm&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>mock_llm</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>        <span class=n>mock_llm</span><span class=o>.</span><span class=n>ainvoke</span> <span class=o>=</span> <span class=n>AsyncMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>            <span class=n>return_value</span><span class=o>=</span><span class=n>MagicMock</span><span class=p>(</span>
 </span></span><span class=line><span class=cl>                <span class=n>content</span><span class=o>=</span><span class=s2>&#34;Thủ đô của Việt Nam là Hà Nội.&#34;</span>
@@ -417,7 +417,7 @@ System
 </span></span><span class=line><span class=cl>    <span class=k>assert</span> <span class=n>result2</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><blockquote><p>🔑 <strong>ĐIỂM CHÍNH:</strong> Khi test LangGraph, test theo 3 mức: (1) từng node riêng lẻ (unit), (2) conditional routing logic (unit), (3) toàn bộ graph flow end-to-end (integration). Mock tất cả LLM calls để test nhanh và ổn định.</p></blockquote><h3>Test conditional routing riêng biệt<span class="hx:absolute hx:-mt-20" id=test-conditional-routing-riêng-biệt></span>
 <a href=#test-conditional-routing-ri%c3%aang-bi%e1%bb%87t class=subheading-anchor aria-label="Permalink for this section"></a></h3><p>Conditional routing là logic quan trọng nhất trong LangGraph — nó quyết định agent đi qua path nào. Test riêng routing function đảm bảo agent hành xử đúng với mỗi loại input.</p><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># tests/test_routing.py</span>
 </span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>pytest</span>
-</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>app.agent.routing</span> <span class=kn>import</span> <span class=n>should_retrieve</span><span class=p>,</span> <span class=n>classify_intent</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>src.agents.routing</span> <span class=kn>import</span> <span class=n>should_retrieve</span><span class=p>,</span> <span class=n>classify_intent</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>TestShouldRetrieve</span><span class=p>:</span>
@@ -459,35 +459,35 @@ System
 </span></span><span class=line><span class=cl>pip install pytest-cov
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Chạy tests với coverage report</span>
-</span></span><span class=line><span class=cl>pytest tests/ --cov<span class=o>=</span>app --cov-report<span class=o>=</span>term-missing
+</span></span><span class=line><span class=cl>pytest tests/ --cov<span class=o>=</span>src --cov-report<span class=o>=</span>term-missing
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Tạo HTML report (mở htmlcov/index.html trong browser)</span>
-</span></span><span class=line><span class=cl>pytest tests/ --cov<span class=o>=</span>app --cov-report<span class=o>=</span>html
+</span></span><span class=line><span class=cl>pytest tests/ --cov<span class=o>=</span>src --cov-report<span class=o>=</span>html
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Đặt minimum coverage threshold</span>
-</span></span><span class=line><span class=cl>pytest tests/ --cov<span class=o>=</span>app --cov-fail-under<span class=o>=</span><span class=m>60</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><p>Output terminal sẽ hiển thị bảng coverage:</p><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><pre><code>Name                           Stmts   Miss  Cover   Missing
+</span></span><span class=line><span class=cl>pytest tests/ --cov<span class=o>=</span>src --cov-fail-under<span class=o>=</span><span class=m>60</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><p>Output terminal sẽ hiển thị bảng coverage:</p><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><pre><code>Name                           Stmts   Miss  Cover   Missing
 -------------------------------------------------------------
-app/__init__.py                    0      0   100%
-app/main.py                       25      3    88%   45-47
-app/api/__init__.py                0      0   100%
-app/api/health.py                  8      0   100%
-app/api/chat.py                   35     12    66%   23-28, 41-46
-app/agent/__init__.py              0      0   100%
-app/agent/graph.py                45     18    60%   34-52, 67-71
-app/agent/nodes.py                30      5    83%   15, 28-30
-app/agent/routing.py              12      0   100%
+src/__init__.py                    0      0   100%
+src/main.py                       25      3    88%   45-47
+src/api/__init__.py                0      0   100%
+src/api/routes.py                  8      0   100%
+src/api/routes.py                   35     12    66%   23-28, 41-46
+src/agents/__init__.py              0      0   100%
+src/agents/graph.py                45     18    60%   34-52, 67-71
+src/agents/nodes/                 30      5    83%   15, 28-30
+src/agents/routing.py              12      0   100%
 -------------------------------------------------------------
 TOTAL                            155     38    75%</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"><button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50" title="Copy code" aria-label="Copy code" data-copied-label=Copied!><div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div><div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div></button></div></div><p>Cột &ldquo;Missing&rdquo; cho biết dòng nào chưa được test覆盖 — tập trung viết test cho những dòng này.</p><h3>Mục tiêu coverage cho AI20K<span class="hx:absolute hx:-mt-20" id=mục-tiêu-coverage-cho-ai20k></span>
 <a href=#m%e1%bb%a5c-ti%c3%aau-coverage-cho-ai20k class=subheading-anchor aria-label="Permalink for this section"></a></h3><table><thead><tr><th>Phần code</th><th>Mục tiêu coverage</th><th>Ghi chú</th></tr></thead><tbody><tr><td>API endpoints</td><td>80%+</td><td>Quan trọng nhất, dễ test</td></tr><tr><td>Agent nodes</td><td>70%+</td><td>Mock LLM, test logic</td></tr><tr><td>Routing logic</td><td>90%+</td><td>Đơn giản, parametrize test</td></tr><tr><td>Graph flow</td><td>60%+</td><td>Integration test</td></tr><tr><td>Utilities</td><td>80%+</td><td>Pure functions, dễ test</td></tr><tr><td>Configuration</td><td>50%+</td><td>Ít logic, ít priority</td></tr><tr><td><strong>Tổng thể</strong></td><td><strong>60%+</strong></td><td><strong>Mục tiêu tối thiểu</strong></td></tr></tbody></table><h3>Cấu hình coverage trong <code>pyproject.toml</code><span class="hx:absolute hx:-mt-20" id=cấu-hình-coverage-trong-pyprojecttoml></span>
 <a href=#c%e1%ba%a5u-h%c3%acnh-coverage-trong-pyprojecttoml class=subheading-anchor aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"><div><div class=highlight><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=line><span class=cl><span class=p>[</span><span class=nx>tool</span><span class=p>.</span><span class=nx>pytest</span><span class=p>.</span><span class=nx>ini_options</span><span class=p>]</span>
 </span></span><span class=line><span class=cl><span class=nx>testpaths</span> <span class=p>=</span> <span class=p>[</span><span class=s2>&#34;tests&#34;</span><span class=p>]</span>
 </span></span><span class=line><span class=cl><span class=nx>asyncio_mode</span> <span class=p>=</span> <span class=s2>&#34;auto&#34;</span>
-</span></span><span class=line><span class=cl><span class=nx>addopts</span> <span class=p>=</span> <span class=s2>&#34;-v --cov=app --cov-report=term-missing --cov-fail-under=60&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>addopts</span> <span class=p>=</span> <span class=s2>&#34;-v --cov=src --cov-report=term-missing --cov-fail-under=60&#34;</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=p>[</span><span class=nx>tool</span><span class=p>.</span><span class=nx>coverage</span><span class=p>.</span><span class=nx>run</span><span class=p>]</span>
-</span></span><span class=line><span class=cl><span class=nx>source</span> <span class=p>=</span> <span class=p>[</span><span class=s2>&#34;app&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=nx>source</span> <span class=p>=</span> <span class=p>[</span><span class=s2>&#34;src&#34;</span><span class=p>]</span>
 </span></span><span class=line><span class=cl><span class=nx>omit</span> <span class=p>=</span> <span class=p>[</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;app/__init__.py&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;src/__init__.py&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;*/tests/*&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>    <span class=s2>&#34;*/migrations/*&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl><span class=p>]</span>

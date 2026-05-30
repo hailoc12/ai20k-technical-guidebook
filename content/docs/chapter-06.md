@@ -107,6 +107,8 @@ Mở http://localhost:8501 — bạn đã có giao diện chat hoàn chỉnh!
 
 ### Streaming với Streamlit
 
+> ⚠️ **LƯU Ý:** Endpoint `/api/v1/chat/stream` chưa có sẵn trong template — bạn cần tự triển khai endpoint này ở backend (xem Chương 5 phần Streaming Response). Các code mẫu dưới đây giả định bạn đã triển khai endpoint streaming.
+
 ```python
 # Thay phần "Call API" bằng streaming version:
 with st.chat_message("assistant"):

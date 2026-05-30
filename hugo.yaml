@@ -27,7 +27,7 @@ menu:
         type: search
     - name: GitHub
       weight: 3
-      url: "https://github.com/hailoc12/ai20k-agent-template"
+      url: "https://github.com/AI20K-Build-Cohort-2/starter-code-template"
       params:
         icon: github
 

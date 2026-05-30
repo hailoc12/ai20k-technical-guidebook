@@ -1123,6 +1123,8 @@ LangGraph hỗ trợ retry policy tự động ở level node. Bạn truyền `r
 ```python
 from langgraph.types import RetryPolicy
 
+# Lưu ý: RetryPolicy có thể nằm ở module khác tùy phiên bản LangGraph — kiểm tra documentation chính thức
+
 # Định nghĩa retry policy
 retry_policy = RetryPolicy(
     max_attempts=3,           # Thử tối đa 3 lần

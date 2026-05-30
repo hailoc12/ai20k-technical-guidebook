@@ -1,4 +1,4 @@
-module github.com/a20-ai-thuc-chien/ai20k-technical-guidebook
+module github.com/AI20K-Build-Cohort-2/ai20k-technical-guidebook
 
 go 1.26.1
 

@@ -9,7 +9,7 @@ weight: 1
 ### Bước 1: Clone Template
 
 ```bash
-git clone https://github.com/hailoc12/ai20k-agent-template.git A20-App-XXX
+git clone https://github.com/AI20K-Build-Cohort-2/starter-code-template.git A20-App-XXX
 cd A20-App-XXX
 ```
 

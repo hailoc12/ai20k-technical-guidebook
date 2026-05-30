@@ -50,7 +50,7 @@ FastAPI có thể không phù hợp khi:
 - Project nhỏ, prototype nhanh không cần production-ready
 - Team đã quen Django và không muốn học framework mới
 
-> 💡 **MẸO:** Cài đặt FastAPI kèm uvicorn (ASGI server) để chạy: `pip install fastapi uvicorn`. Uvicorn là server ASGI hiệu năng cao, tương tự như Gunicorn cho WSGI. Trong production, chạy uvicorn với multiple workers: `uvicorn app.main:app --workers 4`.
+> 💡 **MẸO:** Cài đặt FastAPI kèm uvicorn (ASGI server) để chạy: `pip install fastapi uvicorn`. Uvicorn là server ASGI hiệu năng cao, tương tự như Gunicorn cho WSGI. Trong production, chạy uvicorn với multiple workers: `uvicorn src.main:app --workers 4`.
 
 ---
 
@@ -834,7 +834,7 @@ class HealthResponse(BaseModel):
 async def lifespan(app: FastAPI):
     # Startup
     logger.info("Khởi tạo AI20K Agent API...")
-    from agent import build_graph
+    from src.agents.graph import build_graph
     app.state.agent = build_graph()
     logger.info("Agent đã sẵn sàng!")
     
