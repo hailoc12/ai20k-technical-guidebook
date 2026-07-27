@@ -1,0 +1,14 @@
+# Hugo build output
+public/
+resources/
+.hugo_build.lock
+
+# macOS duplicates
+* 2.*
+* 2.mod
+* 2.sum
+* 2.yaml
+* 2.md
+
+# OS
+.DS_Store
