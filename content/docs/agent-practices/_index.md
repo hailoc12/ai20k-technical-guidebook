@@ -13,6 +13,9 @@ các tiêu chí AI Agent, Code Quality và Evaluation Evidence.
 > Mỗi practice đều kèm **bằng chứng cohort** ("X/12 đội đã làm") và **before/after**,
 > để bạn hiểu VÌ SAO chứ không chỉ HOW.
 
+> 📄 **Xem bản tổng hợp one-page** (cả template + guidebook + anti-patterns +
+> inspiration map): [Báo cáo tổng hợp Cohort 3](https://github.com/hailoc12/ai20k-agent-template/blob/main/docs/COHORT3_REPORT.md).
+
 ## Trang trong mục này
 
 - [Prompt Engineering](prompts.md) — XML structure, SAFEGUARDS, citation, external files

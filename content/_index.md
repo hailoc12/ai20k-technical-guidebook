@@ -5,6 +5,11 @@ description: "Hướng dẫn kỹ thuật toàn diện cho học viên AI20K xâ
 
 {{< card link="docs/chapter-01" title="📖 Bắt đầu đọc — Chương 1: Lời mở đầu" subtitle="Mục tiêu, cách sử dụng, lộ trình 6 tuần" >}}
 
+> 📄 **Báo cáo tổng hợp Cohort 3** — tài liệu one-page tổng hợp toàn bộ cải thiện
+> *Agent Template* (6 lớp) + chương *Agent Engineering Practices* + 10 anti-pattern +
+> inspiration map từ 12 đội Cohort 1 & 2:
+> **[docs/COHORT3_REPORT.md (repo ai20k-agent-template)](https://github.com/hailoc12/ai20k-agent-template/blob/main/docs/COHORT3_REPORT.md)**
+
 ---
 
 ## Các chương
