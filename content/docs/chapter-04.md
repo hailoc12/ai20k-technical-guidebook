@@ -1070,6 +1070,23 @@ def route_search(state: ResearchState) -> str:
 
 ---
 
+```mermaid
+flowchart LR
+    IN[User query] --> GR[Guardrail input check]
+    GR --> RS[reason: chon hanh dong]
+    RS --> RT{tool call?}
+    RT -->|tool thuong| ACT[act: chay tool an toan]
+    RT -->|tool rui ro| HUMAN["HITL interrupt: cho nguoi duyet"]
+    RT -->|du du kien| FIN[finalize: cau tra loi]
+    HUMAN -->|dong y| ACT
+    HUMAN -->|tu choi| RS
+    ACT --> AS[assess: du du kien chua?]
+    AS -->|chua + con vong| RS
+    AS -->|het vong| ESC[finalize_with_partial: escape hatch]
+    FIN --> OUT[Output + citations]
+    ESC --> OUT
+```
+
 ## 4.8A Harness Engineering — Khung quanh agent
 
 ### Harness là gì?

@@ -54,6 +54,18 @@ FastAPI có thể không phù hợp khi:
 
 ---
 
+```mermaid
+flowchart LR
+    C[Client] --> MW[Middleware: CORS + logging]
+    MW --> V[Pydantic validator: request schema]
+    V --> R[Route handler /api/v1/chat]
+    R --> AG[Agent graph: src/agents/graph.py]
+    AG --> SS{streaming?}
+    SS -->|yes| ST[StreamingResponse: chunk tung phan]
+    SS -->|no| JSON[JSON response: schema locked]
+    ST --> E[Error mapping 4xx/5xx]
+```
+
 ## 8.2 Routes và Schemas
 
 ### Định nghĩa Routes

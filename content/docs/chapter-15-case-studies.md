@@ -295,6 +295,21 @@ Demo: https://c3-app-138.tech-vibe.io.vn/ — Video: https://drive.google.com/fi
 
 ---
 
+```mermaid
+flowchart TD
+    START[Doi moi: doc case nao truoc?] --> Q1{San pham co RAG?}
+    Q1 -->|co| RAG[Legolas + NurA: RAG + guardrail y khoa]
+    Q1 -->|khong| Q2{Van de chinh la eval?}
+    Q2 -->|co| EV[AI Finance + Aclaris: eval arc + metrics]
+    Q2 -->|khong| Q3{Bi diem thap vi rubric?}
+    Q3 -->|co| RK[ResearchKit 012: diem rubric khac code]
+    Q3 -->|khong| DL[DevCoach 002 + NexusEdu 007: architecture + CI]
+    RAG --> WEEK2[Truoc tuan 2: doc 3 case gan nhat + adopt 1 ky thuat]
+    EV --> WEEK2
+    RK --> WEEK2
+    DL --> WEEK2
+```
+
 ## Cách dùng chương này
 
 1. **Trước tuần 2, đọc 3 case gần sản phẩm của bạn nhất.** Sản phẩm sinh tri thức/RAG -> Case 1, 5, 8. Domain nhạy cảm (y tế, tài chính, pháp lý, giáo dục) -> Case 2, 3, 4, 9. Muốn chuẩn hóa kỹ thuật đội -> Case 6, 7. Đang định nghĩa USP và public demo -> Case 10, 11, 12.

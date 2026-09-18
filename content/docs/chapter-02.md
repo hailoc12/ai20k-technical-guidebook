@@ -16,6 +16,16 @@ weight: 2
 
 **Quy tắc:** chuẩn bị "hoàn thành hơn hoàn hảo". Tầng 1 có thể vứt đi 100% — và đó là thắng, không phải lỗ. Khi up tầng 2, mang theo đúng 2 thứ từ tầng 1: câu hỏi user thật (→ golden dataset chương 10) + USP đã validate (chương USP).
 
+```mermaid
+flowchart LR
+    A[Clone template] --> B[Tao venv Python 3.12]
+    B --> C[cap nhat requirements.txt]
+    C --> D[Config .env: API key + cascade model]
+    D --> E[Setup AI logging hooks]
+    E --> F[make run: server + Swagger UI]
+    F --> G[Branch develop + commit dau]
+```
+
 ## Clone template — Bắt đầu từ nền tảng đúng
 
 Một trong những sai lầm phổ biến nhất của sinh viên khi bắt đầu dự án mới là tạo mọi thứ từ con số không — tự setup cấu trúc thư mục, tự cấu hình linting, tự viết CI/CD file, tự tạo Dockerfile. Kết quả là mỗi đội có một cấu trúc khác nhau, thiếu những file quan trọng, và mất hàng ngày chỉ để setup thay vì viết logic chính. Template dự án giải quyết vấn đề này bằng cách cung cấp một nền tảng đã được chuẩn hóa, bao gồm tất cả best practices mà bạn cần.

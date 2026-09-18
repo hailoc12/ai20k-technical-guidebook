@@ -64,6 +64,18 @@ Khi bạn phát triển ứng dụng AI Agent, Docker đặc biệt quan trọng
 
 > ⚠️ **LƯU Ý:** Không lưu secrets (API keys, passwords) trong Docker image. Sử dụng environment variables hoặc Docker secrets để truyền thông tin nhạy cảm lúc runtime.
 
+```mermaid
+flowchart LR
+    PUSH[git push] --> CI[GitHub Actions]
+    CI --> LINT[ruff check]
+    LINT --> TEST[pytest + coverage]
+    TEST --> BUILD[Docker build multi-stage]
+    BUILD --> SCAN[Health check container]
+    SCAN --> DEPLOY{branch?}
+    DEPLOY -->|develop| STG[Staging: Render/Vercel preview]
+    DEPLOY -->|main| PROD[Production deploy]
+```
+
 ## 12.2 Multi-stage Dockerfile
 
 Multi-stage build là kỹ thuật Docker cho phép bạn sử dụng nhiều stage (giai đoạn) trong một `Dockerfile`. Stage đầu tiên (builder) cài đặt dependencies và build ứng dụng. Stage thứ hai (production) chỉ copy kết quả build, bỏ qua toàn bộ công cụ build. Kết quả: image production nhỏ gọn hơn 5-10 lần, an toàn hơn vì không chứa build tools.

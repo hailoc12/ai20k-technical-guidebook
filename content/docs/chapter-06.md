@@ -149,6 +149,17 @@ with st.chat_message("assistant"):
 
 ---
 
+```mermaid
+flowchart LR
+    U[User input] --> SW[SWR hook useChat]
+    SW --> API["POST /api/v1/chat/stream"]
+    API -->|SSE chunks| BUF[Buffer + render tung dong]
+    BUF --> STATES{UI states}
+    STATES -->|loading| SP[Spinner / skeleton]
+    STATES -->|error| ER[Error message + retry]
+    STATES -->|done| DK[Sources + citations hien thi]
+```
+
 ## 9.1 Setup Next.js
 
 ### Tại sao chọn Next.js?

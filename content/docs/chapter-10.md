@@ -327,6 +327,15 @@ Học: **ambition** — BTC đánh giá cao nỗ lực học hỏi và innovatio
 
 > 💡 **MẸO:** Đừng copy code từ dự án khác. Học **pattern** và **approach**, rồi áp dụng vào context dự án của bạn. BTC có thể nhận ra code copy và đánh giá thấp. Hiểu tại sao họ làm vậy quan trọng hơn làm đúng hệt họ.
 
+```mermaid
+flowchart LR
+    G1["G1 Tuan 1: USP + proposal"] --> G2["G2 Tuan 2: diagram + API skeleton"]
+    G2 --> G3["G3 Tuan 3: agent chay + guardrail"]
+    G3 --> G4["G4 Tuan 4: deploy + CI + eval vong 1"]
+    G4 --> G5["G5 Tuan 5: before/after + slop CLEAN"]
+    G5 --> G6["G6 Tuan 6: 10/10 deliverables"]
+```
+
 ## 10.x Gates G1-G6 — rubric tiến độ theo tuần
 
 > Nguồn: Sổ Tay Mentor Duty AI20K. Mentor dùng 6 gates này check đội mỗi tuần — tự chấm trước buổi mentor duty để không bị bất ngờ.
