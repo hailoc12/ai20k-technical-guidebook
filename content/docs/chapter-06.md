@@ -1,17 +1,17 @@
 ---
 title: "Giao diện người dùng"
-weight: 6
+weight: 9
 ---
 
-# Chương 6: Giao diện người dùng
+# Chương 9: Giao diện người dùng
 
-Sau khi xây dựng AI Agent (Chương 4) và API backend (Chương 5), bạn cần giao diện người dùng (UI) để người dùng tương tác với agent. Chương này hướng dẫn xây dựng frontend chat application với Next.js — từ setup dự án đến hiển thị streaming response từ AI agent.
+Sau khi xây dựng AI Agent (Chương 4) và API backend (Chương 8), bạn cần giao diện người dùng (UI) để người dùng tương tác với agent. Chương này hướng dẫn xây dựng frontend chat application với Next.js — từ setup dự án đến hiển thị streaming response từ AI agent.
 
 > 💡 **MẸO:** Nếu thời gian có hạn và bạn cần prototype nhanh cho demo, hãy bắt đầu với **Streamlit** (xem phần 6.0 bên dưới). Sau khi prototype ổn định, bạn có thể migrate sang Next.js cho giao diện polished hơn.
 
 ---
 
-## 6.0 Streamlit — Prototype trong 30 phút
+## 9.0 Streamlit — Prototype trong 30 phút
 
 Nếu bạn chưa biết React/Next.js hoặc cần giao diện demo nhanh nhất có thể, **Streamlit** là lựa chọn tuyệt vời. Chỉ cần Python — không cần JavaScript, không cần npm, không cần frontend knowledge. Bạn có thể tạo giao diện chat hoàn chỉnh trong dưới 30 phút.
 
@@ -107,7 +107,7 @@ Mở http://localhost:8501 — bạn đã có giao diện chat hoàn chỉnh!
 
 ### Streaming với Streamlit
 
-> ⚠️ **LƯU Ý:** Endpoint `/api/v1/chat/stream` chưa có sẵn trong template — bạn cần tự triển khai endpoint này ở backend (xem Chương 5 phần Streaming Response). Các code mẫu dưới đây giả định bạn đã triển khai endpoint streaming.
+> ⚠️ **LƯU Ý:** Endpoint `/api/v1/chat/stream` chưa có sẵn trong template — bạn cần tự triển khai endpoint này ở backend (xem Chương 8 phần Streaming Response). Các code mẫu dưới đây giả định bạn đã triển khai endpoint streaming.
 
 ```python
 # Thay phần "Call API" bằng streaming version:
@@ -149,7 +149,7 @@ with st.chat_message("assistant"):
 
 ---
 
-## 6.1 Setup Next.js
+## 9.1 Setup Next.js
 
 ### Tại sao chọn Next.js?
 
@@ -354,7 +354,7 @@ export default function ChatPage() {
 
 ---
 
-## 6.2 Thiết kế responsive
+## 9.2 Thiết kế responsive
 
 ### Tailwind CSS Basics
 
@@ -468,7 +468,7 @@ export default function Dashboard() {
 
 ---
 
-## 6.3 Dark Mode
+## 9.3 Dark Mode
 
 ### Tại sao cần Dark Mode?
 
@@ -618,7 +618,7 @@ export default function ChatMessage({ message }: { message: Message }) {
 
 ---
 
-## 6.4 Kết nối với API
+## 9.4 Kết nối với API
 
 ### Fetch API
 
@@ -815,7 +815,7 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
 
 ---
 
-## 6.5 Hiển thị AI Response
+## 9.5 Hiển thị AI Response
 
 ### Chat UI Pattern
 

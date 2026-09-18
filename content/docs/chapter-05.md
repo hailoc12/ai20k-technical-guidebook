@@ -1,15 +1,15 @@
 ---
 title: "Phát triển API với FastAPI"
-weight: 5
+weight: 8
 ---
 
-# Chương 5: Phát triển API với FastAPI
+# Chương 8: Phát triển API với FastAPI
 
 Sau khi xây dựng AI Agent ở Chương 4, bạn cần "đóng gói" agent thành một dịch vụ web mà người dùng có thể truy cập. FastAPI là framework Python hiện đại, lý tưởng để xây dựng API cho AI agents. Chương này sẽ hướng dẫn bạn từ cơ bản đến nâng cao — từ việc tạo route đầu tiên đến triển khai streaming response và kết nối với LangGraph agent.
 
 ---
 
-## 5.1 FastAPI — Framework hiện đại cho AI
+## 8.1 FastAPI — Framework hiện đại cho AI
 
 ### Tại sao chọn FastAPI?
 
@@ -54,7 +54,7 @@ FastAPI có thể không phù hợp khi:
 
 ---
 
-## 5.2 Routes và Schemas
+## 8.2 Routes và Schemas
 
 ### Định nghĩa Routes
 
@@ -207,7 +207,7 @@ app.include_router(v2_router)
 
 ---
 
-## 5.3 Validation với Pydantic
+## 8.3 Validation với Pydantic
 
 Pydantic là thư viện validation mạnh mẽ được tích hợp sâu trong FastAPI. Khi request đến, Pydantic tự động parse và validate data trước khi route handler nhận được. Nếu validation fail, FastAPI tự động trả về 422 Unprocessable Entity với chi tiết lỗi.
 
@@ -249,7 +249,11 @@ from typing import Literal
 
 class AgentConfig(BaseModel):
     """Cấu hình cho agent."""
-    model: Literal["gpt-4o", "gpt-4o-mini", "gpt-3.5-turbo"] = Field(
+    # Danh sách model cập nhật 2026-09 — review mỗi cohort (xem cost-management.md).
+    # gpt-3.5-turbo đã bị retire — KHÔNG dùng nữa.
+    model: Literal["gpt-4o", "gpt-4o-mini", "gpt-4.1",
+                   "claude-sonnet-4-5", "claude-haiku-4-5",
+                   "gemini-2.5-pro", "gemini-2.5-flash"] = Field(
         default="gpt-4o-mini",
         description="LLM model sử dụng",
     )
@@ -338,7 +342,7 @@ class ChatResponse(BaseModel):
 
 ---
 
-## 5.4 Error Handling
+## 8.4 Error Handling
 
 Xử lý lỗi đúng cách là yếu tố then chốt cho API production. API cần trả về error response có cấu trúc, không leak thông tin nhạy cảm, và giúp client hiểu và xử lý lỗi.
 
@@ -467,7 +471,7 @@ async def chat(request: ChatRequest):
 
 ---
 
-## 5.5 CORS và Middleware
+## 8.5 CORS và Middleware
 
 ### CORS là gì?
 
@@ -583,7 +587,7 @@ async def rate_limit_middleware(request: Request, call_next):
 
 ---
 
-## 5.6 Streaming Response
+## 8.6 Streaming Response
 
 AI agents thường mất nhiều giây để sinh câu trả lời. Streaming response (phản hồi luồng) giúp người dùng thấy câu trả lời từng phần ngay khi LLM sinh ra, thay vì chờ đến khi hoàn thành.
 
@@ -690,7 +694,7 @@ async def agent_stream(request: ChatRequest):
 
 ---
 
-## 5.7 Kết nối Agent với API
+## 8.7 Kết nối Agent với API
 
 Phần quan trọng nhất: kết nối LangGraph agent (Chương 4) với FastAPI API. Có hai pattern chính: singleton agent và per-request agent.
 

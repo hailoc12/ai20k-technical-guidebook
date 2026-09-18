@@ -3,6 +3,19 @@ title: "Khởi tạo dự án từ Template"
 weight: 2
 ---
 
+## Chọn tầng khởi đầu: Prototype nhanh hay Template chuẩn?
+
+> 💡 **Bài học cohort:** đội có idea chưa validate mà dựng full Docker/CI ngay tuần 1 → 3 tuần đầu "set up hạ tầng" chứ không học được gì từ user. Ngược lại, đội đã chắc idea mà vẫn code prototype tay → demo ngày bị lỗi dưới tải nặng. Chọn đúng tầng.
+
+| | **Tầng 1 — Prototype ngày 1** (validate idea) | **Tầng 2 — Template chuẩn** (chapter này) |
+|---|---|---|
+| Khi nào | Tuần 1-2, chưa chắc user cần gì; cần cái gì đó MÌNH THẤY được để hỏi 5 user thật | Đã có USP + ≥5 feedback khẳng định (xem chương USP); bắt đầu build nghiêm túc |
+| Công cụ | AI Studio / Gemini canvas + Firebase/Supabase free — KHÔNG server, KHÔNG Docker | Repo này: FastAPI + LangGraph + Docker + CI |
+| Mục tiêu | Trả lời "user có dùng không?" trong 48 giờ | Trả lời "sản phẩm chịu được Demo Day không?" trong 6 tuần |
+| Bỏ gì | DevOps, tests, guardrails (chấp nhận — vì sẽ vứt đi) | Không bỏ gì được nữa |
+
+**Quy tắc:** chuẩn bị "hoàn thành hơn hoàn hảo". Tầng 1 có thể vứt đi 100% — và đó là thắng, không phải lỗ. Khi up tầng 2, mang theo đúng 2 thứ từ tầng 1: câu hỏi user thật (→ golden dataset chương 10) + USP đã validate (chương USP).
+
 ## Clone template — Bắt đầu từ nền tảng đúng
 
 Một trong những sai lầm phổ biến nhất của sinh viên khi bắt đầu dự án mới là tạo mọi thứ từ con số không — tự setup cấu trúc thư mục, tự cấu hình linting, tự viết CI/CD file, tự tạo Dockerfile. Kết quả là mỗi đội có một cấu trúc khác nhau, thiếu những file quan trọng, và mất hàng ngày chỉ để setup thay vì viết logic chính. Template dự án giải quyết vấn đề này bằng cách cung cấp một nền tảng đã được chuẩn hóa, bao gồm tất cả best practices mà bạn cần.
@@ -73,7 +86,8 @@ team-YOUR_TEAM_NAME/
 ├── .gitignore           # Git ignore rules
 ├── Dockerfile           # Container definition
 ├── docker-compose.yml   # Multi-container orchestration
-├── pyproject.toml       # Project metadata & dependencies
+├── requirements.txt     # Python dependencies (pinned versions)
+├── ruff.toml             # Lint configuration
 ├── Makefile             # Common commands shortcut
 └── README.md            # Project documentation
 ```
@@ -106,7 +120,7 @@ Một câu nói kinh điển trong ngành phần mềm là "It works on my machi
 
 Trước khi bắt đầu, hãy xác nhận máy bạn đáp ứng các yêu cầu sau:
 
-- **Python 3.11 hoặc mới hơn.** Python 3.11 mang đến cải thiện tốc độ đáng kể (nhanh hơn 3.11 khoảng 10-25% so với 3.10) và hỗ trợ better error messages. Python 3.12+ cũng hoạt động tốt, nhưng một số thư viện có thể chưa tương thích hoàn toàn. Khuyến nghị: dùng Python 3.11.x.
+- **Python 3.12 hoặc mới hơn.** FastAPI, Pydantic 2, LangChain/LangGraph 1.x đều đã hỗ trợ đầy đủ 3.12/3.13. Khuyến nghị: dùng Python 3.12.x (ổn định, thư viện lõi đã verify 2026-09).
 
 - **pip phiên bản mới nhất.** Chạy `pip install --upgrade pip` để cập nhật.
 
@@ -118,10 +132,10 @@ Kiểm tra phiên bản Python:
 
 ```bash
 $ python3 --version
-# Output mong đợi: Python 3.11.x hoặc cao hơn
+# Output mong đợi: Python 3.12.x hoặc cao hơn
 
 # Nếu bạn có nhiều phiên bản Python, kiểm tra chính xác:
-$ python3.11 --version
+$ python3.12 --version
 ```
 
 ### Tạo virtual environment
@@ -130,7 +144,7 @@ Virtual environment (venv) là một môi trường Python cô lập, tách bi�
 
 ```bash
 # Từ thư mục gốc của dự án
-$ python3.11 -m venv .venv
+$ python3.12 -m venv .venv
 
 # Kích hoạt venv trên macOS/Linux
 $ source .venv/bin/activate
@@ -518,7 +532,7 @@ Agent tự động phân tích sentiment của bài đăng mạng xã hội và 
 
 ## Quick Start
 ```bash
-python3.11 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env  # Điền API key
@@ -541,7 +555,7 @@ OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxx
 - **Git workflow** — Branching strategy và commit message format.
 - **CI/CD configuration** — Nếu template có sẵn file GitHub Actions, giữ nguyên và chỉ chỉnh sửa khi cần.
 - **Testing setup** — `pytest.ini` hoặc cấu hình pytest trong `pyproject.toml`.
-- **Linting configuration** — Cấu hình `ruff` trong `pyproject.toml`.
+- **Linting configuration** — Cấu hình `ruff` trong `ruff.toml`.
 
 ### Kế hoạch hành động cho tuần đầu tiên
 
@@ -553,14 +567,98 @@ Sau khi hoàn thành tất cả các bước trong chương này, bạn nên có
 4. Server chạy được trên localhost, Swagger UI accessible.
 5. README đã cập nhật với thông tin đội.
 6. Branch `develop` đã tạo, ít nhất 1 commit trên `develop`.
+7. AI Logging Hooks đã cài đặt (xem phần dưới).
 
-Nếu bạn đã có đủ 6 mục trên, bạn đang đi đúng hướng. Sang Chương 3, chúng ta sẽ thiết kế kiến trúc hệ thống — quyết định quan trọng nhất ảnh hưởng đến toàn bộ dự án.
+Nếu bạn đã có đủ 7 mục trên, bạn đang đi đúng hướng. Sang Chương 3, chúng ta sẽ thiết kế kiến trúc hệ thống — quyết định quan trọng nhất ảnh hưởng đến toàn bộ dự án.
 
 > ⚠️ **LƯU Ý:** Đừng vội bắt đầu viết Agent logic ngay. Template có sẵn placeholder code trong `src/agents/` — để yên cho đến khi bạn hoàn thành thiết kế kiến trúc ở Chương 3. Code mà không có thiết kế là code mà bạn sẽ phải viết lại. Kinh nghiệm cho thấy: các đội thiết kế trước khi code luôn có kết quả tốt hơn đáng kể so với các đội "code first, design later."
 
+## Cài đặt AI Usage Logging Hooks
+
+Template tích hợp sẵn hệ thống auto-logging — ghi lại mọi prompt và tool call khi bạn dùng AI coding tools. Đây là yêu cầu bắt buộc của chương trình: BTC cần theo dõi việc sử dụng AI tools của các đội.
+
+### Tại sao cần AI Logging?
+
+- **Transparency** — Minh bạch về việc sử dụng AI trong quá trình phát triển
+- **Grading** — BTC sử dụng data này để đánh giá phần "AI Usage" trong rubric
+- **Self-reflection** — Giúp đội xem lại pattern sử dụng AI của mình (tool nào dùng nhiều, prompt nào hiệu quả)
+
+### Chạy setup (bắt buộc — 1 lần duy nhất)
+
+```bash
+# Linux / macOS / Git Bash
+bash scripts/setup_hooks.sh
+
+# Windows PowerShell
+# powershell -ExecutionPolicy Bypass -File scripts\setup_hooks.ps1
+```
+
+Lệnh này cài git pre-push hook và tạo thư mục `.ai-log/`. Sau khi chạy, mọi AI tool dưới đây sẽ tự động log — không cần thao tác thêm.
+
+### 6 AI tools được hỗ trợ tự động
+
+| Tool | Cơ chế | Khi nào log |
+|------|--------|-------------|
+| **Claude Code** | `.claude/settings.json` hooks | Mỗi prompt + mỗi tool call |
+| **Cursor** | `.cursor/hooks.json` | Mỗi prompt + khi stop |
+| **OpenAI Codex CLI** | `.codex/hooks.json` | Mỗi prompt + khi stop |
+| **Gemini CLI** | `.gemini/settings.json` | BeforeAgent + AfterModel + SessionEnd |
+| **GitHub Copilot** | `.github/hooks/hooks.json` | Mỗi prompt + khi session end |
+| **Antigravity IDE** | Pre-push scan transcript | Tự động quét transcript khi `git push` |
+
+### Cách hoạt động
+
+```
+Bạn dùng AI tool (Claude Code, Cursor, v.v.)
+        ↓
+Hook tự động capture prompt + metadata
+        ↓
+Append vào .ai-log/session.jsonl
+        ↓
+git push → pre-push hook submit lên grading server
+```
+
+Metadata được log bao gồm: timestamp, tool name, model, repo, branch, commit, student email, prompt text, tool response.
+
+### Log thủ công cho web tools
+
+Nếu dùng ChatGPT, Claude.ai, Gemini Web, hoặc tool không có hook:
+
+```bash
+# Interactive (script sẽ hỏi tool + prompt)
+bash scripts/_pyrun.sh scripts/log_manual.py
+
+# One-line
+bash scripts/_pyrun.sh scripts/log_manual.py --tool chatgpt --prompt "Brainstorm UI layout"
+bash scripts/_pyrun.sh scripts/log_manual.py --tool gemini-web --prompt "Research scoring algorithms"
+```
+
+### Cấu hình `.env`
+
+Template đã có sẵn trong `.env.example`:
+
+```env
+AI_LOG_SERVER=https://ai-logs.note.transformerlabs.ai/api/ingest
+AI_LOG_API_KEY=<giáo viên sẽ cung cấp>
+AI_LOG_DIR=.ai-log
+```
+
+Copy từ `.env.example` sang `.env` và điền `AI_LOG_API_KEY` do instructor cấp.
+
+### Troubleshooting
+
+| Vấn đề | Nguyên nhân | Cách fix |
+|---------|-------------|----------|
+| Hooks không log | Chưa chạy `setup_hooks.sh` | Chạy lại `bash scripts/setup_hooks.sh` |
+| `python3: not found` | Thiếu Python trên PATH | `brew install python3` (macOS) hoặc cài từ python.org (Windows) |
+| Submit failed | Sai `AI_LOG_API_KEY` hoặc không có network | Kiểm tra `.env`, logs vẫn giữ locally |
+| Antigravity không log | Chưa có transcript | Chắc chắn dùng Antigravity IDE trong repo folder |
+
+> ⚠️ **QUAN TRỌNG:** Đừng sửa hoặc xoá file trong `.ai-log/`. Đừng chạy `git push --no-verify` để bypass hook. Nếu hook báo lỗi, báo cho instructor thay vì tự bypass.
+
 ## Tóm tắt
 
-Chương này hướng dẫn bạn khởi tạo dự án từ template — bước đầu tiên và quan trọng nhất. Chúng ta đã đi qua việc clone repository, hiểu cấu trúc thư mục (src/, tests/, docs/, eval/, presentation/), thiết lập môi trường ảo với Python 3.11+, cài đặt dependencies, và chạy server lần đầu tiên.
+Chương này hướng dẫn bạn khởi tạo dự án từ template — bước đầu tiên và quan trọng nhất. Chúng ta đã đi qua việc clone repository, hiểu cấu trúc thư mục (src/, tests/, docs/, eval/, presentation/), thiết lập môi trường ảo với Python 3.12+, cài đặt dependencies, và chạy server lần đầu tiên.
 
 Bạn cũng đã học cách quản lý biến môi trường với pydantic-settings, thiết lập Git workflow với branching strategy và commit message convention, và hiểu được những gì cần tùy chỉnh so với những gì cần giữ nguyên từ template.
 

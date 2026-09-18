@@ -1,9 +1,9 @@
 ---
 title: "Tài nguyên học tập"
-weight: 10
+weight: 15
 ---
 
-## 10.1 Lộ trình học 6 tuần
+## 15.1 Lộ trình học 6 tuần
 
 Lộ trình này thiết kế cho sinh viên VinUni tham gia AI20K Build Phase, với mục tiêu từ "chưa biết LangGraph" đến "có thể build và deploy AI Agent hoàn chỉnh" trong 6 tuần. Mỗi tuần có focus cụ thể, kết hợp lý thuyết và thực hành.
 
@@ -67,7 +67,7 @@ Mục tiêu: Dockerize, viết tests, deploy lên cloud, setup CI/CD.
 - Monitoring: structured logging, LangSmith, health checks
 - Bài tập: Dockerize app, đạt 60%+ test coverage, deploy lên Render
 
-Tài liệu: Chương 7 và 8 của guidebook này, Docker official tutorial (2 giờ), pytest docs (1 giờ).
+Tài liệu: Chương 12 và 8 của guidebook này, Docker official tutorial (2 giờ), pytest docs (1 giờ).
 
 ### Tuần 6: Evaluation và Chuẩn bị Demo Day
 
@@ -80,7 +80,7 @@ Mục tiêu: Đánh giá chất lượng agent, chuẩn bị deliverables.
 - Code review: xóa bare except, thêm type hints, cleanup
 - Bài tập: Nộp đủ 10 deliverables, đạt 35+/50 điểm dự kiến
 
-Tài liệu: Chương 9 của guidebook này, RAGAS docs (2 giờ).
+Tài liệu: Chương 13 của guidebook này, RAGAS docs (2 giờ).
 
 > 💡 **MẸO:** Lộ trình này intensity cao — ~15-20 giờ/tuần. Nếu bạn có ít thời gian, ưu tiên: Tuần 2 (LangGraph) > Tuần 3 (RAG) > Tuần 5 (DevOps) > Tuần 6 (Evaluation). Đây là thứ tự impact đến điểm số.
 
@@ -96,7 +96,7 @@ Tài liệu: Chương 9 của guidebook này, RAGAS docs (2 giờ).
 | 6 | Evaluation + Demo Day prep | 4 | 10 |
 | **Tổng** | | **34** | **60** |
 
-## 10.2 Khóa học DeepLearning.AI
+## 15.2 Khóa học DeepLearning.AI
 
 DeepLearning.AI (deeplearning.ai) là nền tảng học AI hàng đầu của Andrew Ng, với hơn 121 khóa học ngắn (short courses). Các khóa học này miễn phí, duration 1-2 giờ, và được thiết kế bởi chuyên gia từ OpenAI, LangChain, Google, Anthropic. Đây là nguồn học tập chất lượng cao nhất cho AI20K.
 
@@ -139,7 +139,7 @@ DeepLearning.AI (deeplearning.ai) là nền tảng học AI hàng đầu của A
 - **Tuần 4:** Evaluating and Debugging Generative AI (1 khóa)
 - **Tuần 5-6:** Bonus courses tùy thời gian
 
-## 10.3 Tài liệu LangGraph
+## 15.3 Tài liệu LangGraph
 
 LangGraph là framework chính cho AI20K, và tài liệu chính thức là nguồn học tập đáng tin cậy nhất. Ngoài docs, còn có nhiều tài nguyên cộng đồng chất lượng cao.
 
@@ -205,9 +205,9 @@ python agent.py
 
 > 💡 **MẸO:** Khi gặp lỗi với LangGraph, search GitHub Issues trước: `repo:langchain-ai/langgraph "error message"`. 90% lỗi phổ biến đã được hỏi và trả lời. Nếu không tìm thấy, mở issue mới — maintainers phản hồi nhanh.
 
-## 10.4 BMAD Method
+## 15.4 BMAD Method
 
-BMAD (Build Modular AI Development) là một phương pháp phát triển phần mềm AI-first, phiên bản mới nhất là BMAD-v6. BMAD sử dụng 6 AI agents chuyên biệt, mỗi agent đảm nhiệm một vai trò trong quy trình phát triển, tương tự như một development team thực tế. Hiểu BMAD giúp bạn tư duy về multi-agent systems và project management hiệu quả.
+BMAD (Breakthrough Method for Agile AI-Driven Development) là một phương pháp phát triển phần mềm AI-first, phiên bản mới nhất là BMAD-v6. BMAD sử dụng 6 AI agents chuyên biệt, mỗi agent đảm nhiệm một vai trò trong quy trình phát triển, tương tự như một development team thực tế. Hiểu BMAD giúp bạn tư duy về multi-agent systems và project management hiệu quả.
 
 ### 6 AI Agents trong BMAD-v6
 
@@ -258,7 +258,7 @@ Trong AI20K, bạn có thể áp dụng BMAD bằng cách:
 3. **Session 3-10 (Winston + Sally):** Implement + test song song. Mỗi feature mới = test mới
 4. **Session 11-12 (Paige + Sally):** Hoàn thiện deliverables, chạy evaluation, chuẩn bị Pitch Deck
 
-## 10.5 Dự án mẫu tham khảo
+## 15.5 Dự án mẫu tham khảo
 
 Khi học cách xây dựng AI Agent, việc tham khảo các dự án mẫu tốt là một trong những cách học nhanh nhất. Dưới đây là những pattern và best practices mà các dự án AI Agent chất lượng cao thường có, để bạn học hỏi và áp dụng vào dự án của mình.
 
@@ -326,6 +326,40 @@ Học: **ambition** — BTC đánh giá cao nỗ lực học hỏi và innovatio
 | Documentation | Completeness | README template, ADR mẫu |
 
 > 💡 **MẸO:** Đừng copy code từ dự án khác. Học **pattern** và **approach**, rồi áp dụng vào context dự án của bạn. BTC có thể nhận ra code copy và đánh giá thấp. Hiểu tại sao họ làm vậy quan trọng hơn làm đúng hệt họ.
+
+## 10.x Gates G1-G6 — rubric tiến độ theo tuần
+
+> Nguồn: Sổ Tay Mentor Duty AI20K. Mentor dùng 6 gates này check đội mỗi tuần — tự chấm trước buổi mentor duty để không bị bất ngờ.
+
+| Gate | Tuần | Bằng chứng tối thiểu | Chương guidebook |
+|---|---|---|---|
+| G1 — Idea & scope | 1 | USP statement + 1 trang proposal + prototype tầng 1 đã cho 5 user xem | Ch USP + Ch02 |
+| G2 — Architecture | 2 | Kiến trúc diagram + API skeleton chạy + repo đúng cấu trúc template | Ch03 + Ch02 |
+| G3 — Agent chạy | 3 | Agent trả lời được 5 câu hỏi cốt lõi + tools thật được gọi + guardrail 1 lớp | Ch04 + Ch12 |
+| G4 — Production | 4 | Deploy lên cloud + CI xanh + golden dataset ≥45 case + eval vòng 1 có số | Ch08 + Ch07 |
+| G5 — Production-ready | 5 | Eval before/after + feedback ≥5 user thật + slop-check CLEAN + tổng duyệt BGK | Ch08 + Ch09 |
+| G6 — Demo Day | 6 | 10/10 deliverables + video demo + pitch theo AIDA | Ch09 |
+
+**At-risk triggers (mentor sẽ flag):** miss standup 2 ngày liên tiếp · không commit 3 ngày · gate trễ >3 ngày. Tự theo dõi các trigger này trong journal của đội.
+
+## 10.y Danh mục stack — có NGÀY HẾT HẠN, review mỗi cohort
+
+> Tech đổi nhanh. Danh mục dưới đây verify 2026-09 — đầu mỗi cohort, mentor review lại trước khi phát cho học viên.
+
+| Thành phần | Phiên bản đề xuất (2026-09) | Ngày cần review |
+|---|---|---|
+| Python | 3.12.x | mỗi cohort |
+| LangGraph / LangChain | 1.2.x / 1.4.x | mỗi cohort (breaking changes thường xuyên) |
+| FastAPI / Pydantic | 0.141.x / 2.13.x | 6 tháng |
+| Model OpenAI | gpt-4o / gpt-4o-mini / gpt-4.1 | mỗi cohort — kiểm tra model đã retire chưa |
+| Model Anthropic | claude-sonnet-4-5 / claude-haiku-4-5 | mỗi cohort |
+| Model Google | gemini-2.5-pro / gemini-2.5-flash | mỗi cohort |
+| RAGAS | 0.4.x | mỗi cohort |
+| ~~gpt-3.5-turbo~~ | ĐÃ RETIRE — không dùng | — |
+
+## 10.z 17 đội spotlight cohort 2 (nguồn cảm hứng — case đầy đủ ở chương Case Studies)
+
+Turtalk · Arionear · MedEvidence · SilentGuard · EduGap · Legolas · PaperPulse · Quizify · Smart-XR · PickPilot · SecuSense · VISA · Sim2Real · EdupulseAI · VinAIR · AI Academic Advisor · PromptPilot
 
 ## Tóm tắt
 
